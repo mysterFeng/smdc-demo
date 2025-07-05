@@ -1,6 +1,7 @@
 package com.myster.demo.service;
 
 import com.myster.demo.dto.UserLoginDTO;
+import com.myster.demo.dto.UserPhoneLoginDTO;
 import com.myster.demo.vo.UserVO;
 
 /**
@@ -15,6 +16,11 @@ public interface UserService {
      * 微信登录
      */
     UserVO login(UserLoginDTO loginDTO);
+
+    /**
+     * 手机号密码登录
+     */
+    UserVO phoneLogin(UserPhoneLoginDTO phoneLoginDTO);
 
     /**
      * 根据ID获取用户信息

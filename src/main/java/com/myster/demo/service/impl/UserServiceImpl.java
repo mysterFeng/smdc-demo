@@ -1,15 +1,20 @@
 package com.myster.demo.service.impl;
 
 import com.myster.demo.dto.UserLoginDTO;
+import com.myster.demo.dto.UserPhoneLoginDTO;
 import com.myster.demo.entity.User;
 import com.myster.demo.repository.UserRepository;
 import com.myster.demo.service.UserService;
+import com.myster.demo.service.WechatService;
+import com.myster.demo.util.JwtUtil;
 import com.myster.demo.vo.UserVO;
+import com.myster.demo.vo.WechatLoginVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -27,14 +32,21 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private WechatService wechatService;
+    
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @Override
     @Transactional
     public UserVO login(UserLoginDTO loginDTO) {
-        log.info("用户登录，code: {}", loginDTO.getCode());
+        log.info("用户微信登录，code: {}", loginDTO.getCode());
         
-        // TODO: 调用微信API获取openid
-        String openid = getOpenidFromWechat(loginDTO.getCode());
+        // 调用微信API获取openid和用户信息
+        WechatLoginVO wechatLoginVO = wechatService.login(loginDTO.getCode());
+        String openid = wechatLoginVO.getOpenid();
         
         // 查找或创建用户
         Optional<User> userOpt = userRepository.findByOpenid(openid);
@@ -48,17 +60,53 @@ public class UserServiceImpl implements UserService {
             // 创建新用户
             user = new User();
             user.setOpenid(openid);
+            user.setNickname(wechatLoginVO.getNickName());
+            user.setAvatar(wechatLoginVO.getAvatarUrl());
+            user.setGender(wechatLoginVO.getGender());
             user.setStatus(1);
             user.setLastLoginTime(LocalDateTime.now());
-            
-            // TODO: 解析用户信息
-            if (loginDTO.getUserInfo() != null) {
-                // 解析用户信息并设置昵称、头像等
-            }
         }
         
         user = userRepository.save(user);
-        return convertToVO(user);
+        UserVO userVO = convertToVO(user);
+        
+        // 生成JWT token
+        String token = jwtUtil.generateToken(openid, user.getId());
+        userVO.setToken(token);
+        
+        return userVO;
+    }
+
+    @Override
+    @Transactional
+    public UserVO phoneLogin(UserPhoneLoginDTO phoneLoginDTO) {
+        log.info("用户手机号登录，phone: {}", phoneLoginDTO.getPhone());
+        
+        // 根据手机号查找用户
+        Optional<User> userOpt = userRepository.findByPhone(phoneLoginDTO.getPhone());
+        if (!userOpt.isPresent()) {
+            throw new RuntimeException("用户不存在，请先注册");
+        }
+        
+        User user = userOpt.get();
+        
+        // 验证密码
+        String inputPassword = DigestUtils.md5DigestAsHex(phoneLoginDTO.getPassword().getBytes());
+        if (!inputPassword.equals(user.getPassword())) {
+            throw new RuntimeException("密码错误");
+        }
+        
+        // 更新最后登录时间
+        user.setLastLoginTime(LocalDateTime.now());
+        user = userRepository.save(user);
+        
+        UserVO userVO = convertToVO(user);
+        
+        // 生成JWT token（使用手机号作为标识）
+        String token = jwtUtil.generateToken(phoneLoginDTO.getPhone(), user.getId());
+        userVO.setToken(token);
+        
+        return userVO;
     }
 
     @Override
@@ -108,15 +156,6 @@ public class UserServiceImpl implements UserService {
         user = userRepository.save(user);
         
         return convertToVO(user);
-    }
-
-    /**
-     * 从微信获取OpenID
-     */
-    private String getOpenidFromWechat(String code) {
-        // TODO: 实现微信登录逻辑
-        // 这里先返回一个模拟的openid
-        return "mock_openid_" + System.currentTimeMillis();
     }
 
     /**

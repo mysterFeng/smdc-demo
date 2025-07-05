@@ -15,12 +15,45 @@
       <text class="app-slogan">美味触手可及</text>
     </view>
 
-    <!-- 登录按钮区域 -->
+    <!-- 登录表单区域 -->
     <view class="login-section">
-      <button class="btn-wechat-login" bindtap="wechatLogin">
-        <image class="wechat-icon" src="/images/wechat-icon.png" mode="aspectFit"></image>
-        <text>微信一键登录</text>
+      <view class="form-group">
+        <view class="input-wrapper">
+          <icon class="input-icon" type="phone" size="20" color="#999"></icon>
+          <input 
+            class="input-field" 
+            type="number" 
+            placeholder="请输入手机号" 
+            value="{{phone}}"
+            bindinput="onPhoneInput"
+            maxlength="11"
+          />
+        </view>
+      </view>
+      
+      <view class="form-group">
+        <view class="input-wrapper">
+          <icon class="input-icon" type="lock" size="20" color="#999"></icon>
+          <input 
+            class="input-field" 
+            type="password" 
+            placeholder="请输入密码" 
+            value="{{password}}"
+            bindinput="onPasswordInput"
+            password="{{true}}"
+          />
+        </view>
+      </view>
+
+      <button class="btn-login" bindtap="phoneLogin" disabled="{{isLoading}}">
+        <text wx:if="{{!isLoading}}">登录</text>
+        <text wx:else>登录中...</text>
       </button>
+      
+      <view class="login-options">
+        <text class="forgot-password" bindtap="forgotPassword">忘记密码？</text>
+        <text class="register-link" bindtap="goToRegister">注册账号</text>
+      </view>
       
       <view class="login-tips">
         <text>登录即表示同意</text>
@@ -39,9 +72,9 @@
       </view>
       
       <view class="other-methods">
-        <button class="btn-phone-login" bindtap="phoneLogin">
-          <icon type="phone" size="20" color="#666"></icon>
-          <text>手机号登录</text>
+        <button class="btn-wechat-login" bindtap="wechatLogin" disabled="{{isLoading}}">
+          <image class="wechat-icon" src="/images/wechat-icon.png" mode="aspectFit"></image>
+          <text>微信登录</text>
         </button>
       </view>
     </view>

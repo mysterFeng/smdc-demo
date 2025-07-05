@@ -1,6 +1,7 @@
 package com.myster.demo.controller;
 
 import com.myster.demo.dto.UserLoginDTO;
+import com.myster.demo.dto.UserPhoneLoginDTO;
 import com.myster.demo.service.UserService;
 import com.myster.demo.vo.Result;
 import com.myster.demo.vo.UserVO;
@@ -30,9 +31,26 @@ public class UserController {
 
     @PostMapping("/login")
     public Result<UserVO> login(@Valid @RequestBody UserLoginDTO loginDTO) {
-        log.info("用户登录请求，code: {}", loginDTO.getCode());
-        UserVO userVO = userService.login(loginDTO);
-        return Result.success("登录成功", userVO);
+        log.info("用户微信登录请求，code: {}", loginDTO.getCode());
+        try {
+            UserVO userVO = userService.login(loginDTO);
+            return Result.success("登录成功", userVO);
+        } catch (Exception e) {
+            log.error("微信登录失败", e);
+            return Result.error("登录失败: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/phone-login")
+    public Result<UserVO> phoneLogin(@Valid @RequestBody UserPhoneLoginDTO phoneLoginDTO) {
+        log.info("用户手机号登录请求，phone: {}", phoneLoginDTO.getPhone());
+        try {
+            UserVO userVO = userService.phoneLogin(phoneLoginDTO);
+            return Result.success("登录成功", userVO);
+        } catch (Exception e) {
+            log.error("手机号登录失败", e);
+            return Result.error("登录失败: " + e.getMessage());
+        }
     }
 
     @GetMapping("/{id}")

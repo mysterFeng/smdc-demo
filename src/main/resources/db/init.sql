@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
     nickname VARCHAR(50) COMMENT '微信昵称',
     avatar VARCHAR(255) COMMENT '头像URL',
     phone VARCHAR(20) COMMENT '手机号',
+    password VARCHAR(32) COMMENT '密码（MD5加密）',
     gender TINYINT DEFAULT 0 COMMENT '性别：0-未知，1-男，2-女',
     status TINYINT DEFAULT 1 COMMENT '用户状态：0-禁用，1-正常',
     last_login_time TIMESTAMP NULL COMMENT '最后登录时间',
@@ -130,4 +131,8 @@ INSERT INTO dishes (name, description, price, category_id, stock, status) VALUES
 ('凉拌黄瓜', '清爽可口的凉菜', 12.00, 2, 30, 1),
 ('紫菜蛋花汤', '营养丰富的汤品', 8.00, 3, 80, 1),
 ('白米饭', '香软可口的白米饭', 2.00, 4, 200, 1),
-('可乐', '冰镇可口可乐', 5.00, 5, 100, 1); 
+('可乐', '冰镇可口可乐', 5.00, 5, 100, 1);
+
+-- 插入测试用户账号（密码：123456，MD5加密后为：e10adc3949ba59abbe56e057f20f883e）
+INSERT INTO users (openid, nickname, phone, password, status) VALUES 
+('test_openid_001', '测试用户', '13800138000', 'e10adc3949ba59abbe56e057f20f883e', 1); 

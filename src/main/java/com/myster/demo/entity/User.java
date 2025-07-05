@@ -52,6 +52,12 @@ public class User extends BaseEntity {
     private String phone;
 
     /**
+     * 密码（MD5加密）
+     */
+    @Column(name = "password", length = 32)
+    private String password;
+
+    /**
      * 性别：0-未知，1-男，2-女
      */
     @Column(name = "gender")

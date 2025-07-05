@@ -54,15 +54,18 @@ spring:
 
 # JWT配置
 jwt:
-  secret: ordering-system-jwt-secret-key-2024
+  secret: ordering-system-jwt-secret-key-2024-very-long-secret-key-for-hs512-algorithm
   expiration: 86400000  # 24小时
   header: Authorization
   prefix: Bearer
 
 # 微信小程序配置
 wechat:
-  appid: your-wechat-appid
-  secret: your-wechat-secret
+  appid: wxd6f16a58b090692e
+  secret: 9a5cf664f0f384a69f437213a2e8b464
+  miniprogram:
+    appid: wxd6f16a58b090692e  # 替换为你的小程序AppID
+    secret: 9a5cf664f0f384a69f437213a2e8b464  # 替换为你的小程序AppSecret
   
 # 阿里云OSS配置
 aliyun:
@@ -77,8 +80,9 @@ aliyun:
 # 日志配置
 logging:
   level:
-    com.myster.demo: debug
-    org.springframework.security: debug
+    com.myster.demo: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n"

@@ -56,7 +56,7 @@
 /* Logo区域 */
 .logo-section {
   text-align: center;
-  margin-bottom: 100rpx;
+  margin-bottom: 80rpx;
 }
 
 .logo {
@@ -80,15 +80,45 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* 登录按钮区域 */
+/* 登录表单区域 */
 .login-section {
   margin-bottom: 80rpx;
 }
 
-.btn-wechat-login {
+.form-group {
+  margin-bottom: 30rpx;
+}
+
+.input-wrapper {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50rpx;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.input-icon {
+  margin-right: 20rpx;
+}
+
+.input-field {
+  flex: 1;
+  height: 90rpx;
+  font-size: 32rpx;
+  color: #333;
+  background: transparent;
+  border: none;
+}
+
+.input-field::placeholder {
+  color: #999;
+}
+
+.btn-login {
   width: 100%;
   background-color: #fff;
-  color: #333;
+  color: #ff6b35;
   border: none;
   border-radius: 50rpx;
   padding: 30rpx;
@@ -101,15 +131,28 @@
   box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.1);
 }
 
-.btn-wechat-login:active {
+.btn-login:active {
   transform: translateY(2rpx);
   box-shadow: 0 4rpx 15rpx rgba(0, 0, 0, 0.1);
 }
 
-.wechat-icon {
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 15rpx;
+.btn-login[disabled] {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #999;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  padding: 0 20rpx;
+}
+
+.forgot-password,
+.register-link {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline;
 }
 
 .login-tips {
@@ -152,7 +195,7 @@
   justify-content: center;
 }
 
-.btn-phone-login {
+.btn-wechat-login {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.8);
   border: 1rpx solid rgba(255, 255, 255, 0.3);
@@ -163,11 +206,17 @@
   align-items: center;
 }
 
-.btn-phone-login icon {
+.btn-wechat-login[disabled] {
+  opacity: 0.5;
+}
+
+.wechat-icon {
+  width: 30rpx;
+  height: 30rpx;
   margin-right: 10rpx;
 }
 
-.btn-phone-login:active {
+.btn-wechat-login:active {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -200,13 +249,12 @@
     font-size: 26rpx;
   }
   
-  .btn-wechat-login {
-    padding: 25rpx;
+  .input-field {
     font-size: 30rpx;
   }
   
-  .wechat-icon {
-    width: 36rpx;
-    height: 36rpx;
+  .btn-login {
+    font-size: 30rpx;
+    padding: 28rpx;
   }
 } 

@@ -26,6 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
+                // 允许登录相关接口
+                .antMatchers("/v1/users/login", "/v1/users/phone-login", "/v1/users/test").permitAll()
                 // 允许SpringDoc OpenAPI相关路径
                 .antMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-resources/**", "/webjars/**").permitAll()
                 // 允许健康检查端点

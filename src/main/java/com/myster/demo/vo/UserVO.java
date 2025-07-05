@@ -52,4 +52,9 @@ public class UserVO {
      * 创建时间
      */
     private LocalDateTime createdAt;
+    
+    /**
+     * JWT token
+     */
+    private String token;
 } 
