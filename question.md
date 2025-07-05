@@ -246,6 +246,39 @@ const BASE_URL = 'http://192.168.1.8:8080/api';
 
 ---
 
+## 问题8: 注册功能开发与调试
+
+### 现象
+- 需要实现用户注册功能，支持手机号+验证码注册，前后端接口及小程序页面全部打通。
+
+### 主要开发流程
+1. 新增 `UserRegisterDTO`、`VerifyCodeDTO` 数据传输对象。
+2. 新增 `VerifyCodeService` 接口及实现，使用Redis存储验证码，模拟短信发送。
+3. 扩展 `UserService`，添加注册、发送验证码、验证验证码方法。
+4. 更新 `UserController`，添加注册和发送验证码接口。
+5. 修改 `SecurityConfig`、`JwtInterceptor`、`WebConfig`，放行注册相关接口。
+6. 小程序端新增注册页面，表单校验、验证码发送、注册提交、跳转登录等功能。
+7. 更新 `app.json`，添加注册页面路由。
+
+### 遇到的问题与解决方案
+
+#### 8.1 JDK环境反复报错
+- 现象：`No compiler is provided in this environment. Perhaps you are running on a JRE rather than a JDK?`
+- 解决：永久设置 `JAVA_HOME` 到 JDK 路径，并配置 `PATH`，写入 `~/.zshrc`。
+
+#### 8.2 端口占用
+- 现象：`Port 8080 was already in use.`
+- 解决：查找并杀死占用进程，或更换端口。
+
+#### 8.3 微信小程序调试
+- 现象：`request:fail url not in domain list`、`502 Bad Gateway`
+- 解决：开发者工具勾选"不校验合法域名"，小程序 BASE_URL 配置为局域网IP，确保手机和电脑同一网络。
+
+#### 8.4 代码提交规范
+- 每次功能开发完成后，需同步更新 `question.md`，详细记录开发过程和问题解决思路。
+
+---
+
 ## 最终验证
 
 ### 测试登录接口
