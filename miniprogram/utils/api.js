@@ -1,7 +1,7 @@
 // API基础配置
 // 开发环境：使用内网穿透域名或配置的合法域名
 // 生产环境：使用正式的HTTPS域名
-const BASE_URL = 'http://192.168.1.8:8080/api'; // 开发环境使用局域网IP，注意添加/api前缀
+const BASE_URL = 'http://127.0.0.1:8080/api'; // 开发环境使用127.0.0.1，注意添加/api前缀
 
 // 请求封装
 const request = (options) => {
@@ -109,6 +109,24 @@ const api = {
       url: `/v1/users/${userId}/bind-phone`,
       method: 'POST',
       data: { phone }
+    });
+  },
+  
+  // 用户注册
+  register: (data) => {
+    return request({
+      url: '/v1/users/register',
+      method: 'POST',
+      data
+    });
+  },
+  
+  // 发送验证码
+  sendVerifyCode: (data) => {
+    return request({
+      url: '/v1/users/send-verify-code',
+      method: 'POST',
+      data
     });
   }
 };

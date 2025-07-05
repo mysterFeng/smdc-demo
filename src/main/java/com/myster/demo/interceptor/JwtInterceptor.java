@@ -73,6 +73,8 @@ public class JwtInterceptor implements HandlerInterceptor {
     private boolean isExcludedPath(String requestURI) {
         return requestURI.startsWith("/v1/users/login") ||
                requestURI.startsWith("/v1/users/phone-login") ||
+               requestURI.startsWith("/v1/users/register") ||
+               requestURI.startsWith("/v1/users/send-verify-code") ||
                requestURI.startsWith("/v1/users/test") ||
                requestURI.startsWith("/error") ||
                requestURI.equals("/");

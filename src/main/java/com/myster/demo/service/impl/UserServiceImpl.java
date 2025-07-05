@@ -2,9 +2,12 @@ package com.myster.demo.service.impl;
 
 import com.myster.demo.dto.UserLoginDTO;
 import com.myster.demo.dto.UserPhoneLoginDTO;
+import com.myster.demo.dto.UserRegisterDTO;
+import com.myster.demo.dto.VerifyCodeDTO;
 import com.myster.demo.entity.User;
 import com.myster.demo.repository.UserRepository;
 import com.myster.demo.service.UserService;
+import com.myster.demo.service.VerifyCodeService;
 import com.myster.demo.service.WechatService;
 import com.myster.demo.util.JwtUtil;
 import com.myster.demo.vo.UserVO;
@@ -38,6 +41,9 @@ public class UserServiceImpl implements UserService {
     
     @Autowired
     private JwtUtil jwtUtil;
+    
+    @Autowired
+    private VerifyCodeService verifyCodeService;
 
     @Override
     @Transactional
@@ -156,6 +162,73 @@ public class UserServiceImpl implements UserService {
         user = userRepository.save(user);
         
         return convertToVO(user);
+    }
+
+    @Override
+    @Transactional
+    public UserVO register(UserRegisterDTO registerDTO) {
+        log.info("用户注册，phone: {}", registerDTO.getPhone());
+        
+        // 验证密码一致性
+        if (!registerDTO.getPassword().equals(registerDTO.getConfirmPassword())) {
+            throw new RuntimeException("两次输入的密码不一致");
+        }
+        
+        // 检查手机号是否已注册
+        if (userRepository.existsByPhone(registerDTO.getPhone())) {
+            throw new RuntimeException("该手机号已注册");
+        }
+        
+        // 验证验证码
+        if (!verifyCodeService.verifyCode(registerDTO.getPhone(), registerDTO.getVerifyCode(), "register")) {
+            throw new RuntimeException("验证码错误或已过期");
+        }
+        
+        // 创建新用户
+        User user = new User();
+        user.setPhone(registerDTO.getPhone());
+        user.setPassword(DigestUtils.md5DigestAsHex(registerDTO.getPassword().getBytes()));
+        user.setNickname(registerDTO.getNickname() != null ? registerDTO.getNickname() : "用户" + registerDTO.getPhone().substring(7));
+        user.setGender(registerDTO.getGender());
+        user.setStatus(1);
+        user.setLastLoginTime(LocalDateTime.now());
+        
+        // 生成一个临时的openid（用于JWT）
+        user.setOpenid("phone_" + registerDTO.getPhone());
+        
+        user = userRepository.save(user);
+        UserVO userVO = convertToVO(user);
+        
+        // 生成JWT token
+        String token = jwtUtil.generateToken(registerDTO.getPhone(), user.getId());
+        userVO.setToken(token);
+        
+        return userVO;
+    }
+
+    @Override
+    public void sendVerifyCode(VerifyCodeDTO verifyCodeDTO) {
+        log.info("发送验证码，phone: {}, type: {}", verifyCodeDTO.getPhone(), verifyCodeDTO.getType());
+        
+        // 检查手机号是否已注册（注册时）
+        if ("register".equals(verifyCodeDTO.getType()) && userRepository.existsByPhone(verifyCodeDTO.getPhone())) {
+            throw new RuntimeException("该手机号已注册");
+        }
+        
+        // 检查手机号是否存在（登录时）
+        if ("login".equals(verifyCodeDTO.getType()) && !userRepository.existsByPhone(verifyCodeDTO.getPhone())) {
+            throw new RuntimeException("该手机号未注册");
+        }
+        
+        boolean success = verifyCodeService.sendCode(verifyCodeDTO.getPhone(), verifyCodeDTO.getType());
+        if (!success) {
+            throw new RuntimeException("验证码发送失败，请稍后重试");
+        }
+    }
+
+    @Override
+    public boolean verifyCode(String phone, String code, String type) {
+        return verifyCodeService.verifyCode(phone, code, type);
     }
 
     /**

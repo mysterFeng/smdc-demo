@@ -1,0 +1,144 @@
+<view class="register-container">
+  <!-- 背景装饰 -->
+  <view class="bg-decoration">
+    <view class="circle circle-1"></view>
+    <view class="circle circle-2"></view>
+    <view class="circle circle-3"></view>
+  </view>
+
+  <!-- 主要内容 -->
+  <view class="register-content">
+    <!-- 头部 -->
+    <view class="header">
+      <text class="title">注册账号</text>
+      <text class="subtitle">创建您的专属账号</text>
+    </view>
+
+    <!-- 注册表单 -->
+    <view class="form-section">
+      <!-- 手机号 -->
+      <view class="form-group">
+        <view class="input-wrapper">
+          <icon class="input-icon" type="phone" size="20" color="#999"></icon>
+          <input 
+            class="input-field" 
+            type="number" 
+            placeholder="请输入手机号" 
+            value="{{phone}}"
+            bindinput="onPhoneInput"
+            maxlength="11"
+          />
+        </view>
+      </view>
+      
+      <!-- 验证码 -->
+      <view class="form-group">
+        <view class="input-wrapper">
+          <icon class="input-icon" type="success" size="20" color="#999"></icon>
+          <input 
+            class="input-field verify-input" 
+            type="number" 
+            placeholder="请输入验证码" 
+            value="{{verifyCode}}"
+            bindinput="onVerifyCodeInput"
+            maxlength="6"
+          />
+          <button 
+            class="btn-verify-code {{canSendCode ? '' : 'disabled'}}" 
+            bindtap="sendVerifyCode"
+            disabled="{{!canSendCode || isSendingCode}}"
+          >
+            {{isSendingCode ? '发送中...' : (countdown > 0 ? countdown + 's' : '获取验证码')}}
+          </button>
+        </view>
+      </view>
+      
+      <!-- 昵称 -->
+      <view class="form-group">
+        <view class="input-wrapper">
+          <icon class="input-icon" type="user" size="20" color="#999"></icon>
+          <input 
+            class="input-field" 
+            type="text" 
+            placeholder="请输入昵称（可选）" 
+            value="{{nickname}}"
+            bindinput="onNicknameInput"
+            maxlength="20"
+          />
+        </view>
+      </view>
+      
+      <!-- 密码 -->
+      <view class="form-group">
+        <view class="input-wrapper">
+          <icon class="input-icon" type="lock" size="20" color="#999"></icon>
+          <input 
+            class="input-field" 
+            type="password" 
+            placeholder="请输入密码" 
+            value="{{password}}"
+            bindinput="onPasswordInput"
+            password="{{true}}"
+          />
+        </view>
+      </view>
+      
+      <!-- 确认密码 -->
+      <view class="form-group">
+        <view class="input-wrapper">
+          <icon class="input-icon" type="lock" size="20" color="#999"></icon>
+          <input 
+            class="input-field" 
+            type="password" 
+            placeholder="请确认密码" 
+            value="{{confirmPassword}}"
+            bindinput="onConfirmPasswordInput"
+            password="{{true}}"
+          />
+        </view>
+      </view>
+      
+      <!-- 性别选择 -->
+      <view class="form-group">
+        <view class="gender-section">
+          <text class="gender-label">性别：</text>
+          <view class="gender-options">
+            <view 
+              class="gender-option {{gender === 0 ? 'active' : ''}}" 
+              bindtap="selectGender" 
+              data-gender="0"
+            >
+              <text>保密</text>
+            </view>
+            <view 
+              class="gender-option {{gender === 1 ? 'active' : ''}}" 
+              bindtap="selectGender" 
+              data-gender="1"
+            >
+              <text>男</text>
+            </view>
+            <view 
+              class="gender-option {{gender === 2 ? 'active' : ''}}" 
+              bindtap="selectGender" 
+              data-gender="2"
+            >
+              <text>女</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 注册按钮 -->
+      <button class="btn-register" bindtap="register" disabled="{{isLoading}}">
+        <text wx:if="{{!isLoading}}">注册</text>
+        <text wx:else>注册中...</text>
+      </button>
+      
+      <!-- 登录链接 -->
+      <view class="login-link">
+        <text>已有账号？</text>
+        <text class="link-text" bindtap="goToLogin">立即登录</text>
+      </view>
+    </view>
+  </view>
+</view> 

@@ -158,11 +158,8 @@ Page({
 
   // 注册账号
   goToRegister() {
-    wx.showModal({
-      title: '注册账号',
-      content: '注册功能开发中，请联系客服开通账号',
-      showCancel: false,
-      confirmText: '知道了'
+    wx.navigateTo({
+      url: '/pages/register/register'
     });
   },
 

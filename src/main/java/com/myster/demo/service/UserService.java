@@ -2,6 +2,8 @@ package com.myster.demo.service;
 
 import com.myster.demo.dto.UserLoginDTO;
 import com.myster.demo.dto.UserPhoneLoginDTO;
+import com.myster.demo.dto.UserRegisterDTO;
+import com.myster.demo.dto.VerifyCodeDTO;
 import com.myster.demo.vo.UserVO;
 
 /**
@@ -41,4 +43,19 @@ public interface UserService {
      * 绑定手机号
      */
     UserVO bindPhone(Long userId, String phone);
+
+    /**
+     * 用户注册
+     */
+    UserVO register(UserRegisterDTO registerDTO);
+
+    /**
+     * 发送验证码
+     */
+    void sendVerifyCode(VerifyCodeDTO verifyCodeDTO);
+
+    /**
+     * 验证验证码
+     */
+    boolean verifyCode(String phone, String code, String type);
 } 

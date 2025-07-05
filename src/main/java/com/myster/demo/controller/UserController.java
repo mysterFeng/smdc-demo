@@ -2,6 +2,8 @@ package com.myster.demo.controller;
 
 import com.myster.demo.dto.UserLoginDTO;
 import com.myster.demo.dto.UserPhoneLoginDTO;
+import com.myster.demo.dto.UserRegisterDTO;
+import com.myster.demo.dto.VerifyCodeDTO;
 import com.myster.demo.service.UserService;
 import com.myster.demo.vo.Result;
 import com.myster.demo.vo.UserVO;
@@ -72,6 +74,30 @@ public class UserController {
     public Result<UserVO> bindPhone(@PathVariable @NotNull Long id, @RequestParam @NotNull String phone) {
         UserVO userVO = userService.bindPhone(id, phone);
         return Result.success("绑定成功", userVO);
+    }
+
+    @PostMapping("/register")
+    public Result<UserVO> register(@Valid @RequestBody UserRegisterDTO registerDTO) {
+        log.info("用户注册请求，phone: {}", registerDTO.getPhone());
+        try {
+            UserVO userVO = userService.register(registerDTO);
+            return Result.success("注册成功", userVO);
+        } catch (Exception e) {
+            log.error("用户注册失败", e);
+            return Result.error("注册失败: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/send-verify-code")
+    public Result<String> sendVerifyCode(@Valid @RequestBody VerifyCodeDTO verifyCodeDTO) {
+        log.info("发送验证码请求，phone: {}, type: {}", verifyCodeDTO.getPhone(), verifyCodeDTO.getType());
+        try {
+            userService.sendVerifyCode(verifyCodeDTO);
+            return Result.success("验证码发送成功");
+        } catch (Exception e) {
+            log.error("发送验证码失败", e);
+            return Result.error("发送失败: " + e.getMessage());
+        }
     }
 
     @GetMapping("/test")
