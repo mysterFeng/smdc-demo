@@ -1,0 +1,96 @@
+<view class="profile-container">
+  <!-- 用户信息区域 -->
+  <view class="user-section">
+    <view class="user-info" bindtap="goToUserInfo">
+      <image class="user-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      <view class="user-details">
+        <view class="user-name">{{userInfo.nickName || '未登录'}}</view>
+        <view class="user-phone" wx:if="{{userInfo.phone}}">{{userInfo.phone}}</view>
+        <view class="user-tip" wx:else>点击登录</view>
+      </view>
+      <icon type="arrow" size="16" color="#999"></icon>
+    </view>
+  </view>
+
+  <!-- 统计信息 -->
+  <view class="stats-section">
+    <view class="stats-item" bindtap="goToOrders" data-status="1">
+      <text class="stats-number">{{stats.pendingCount}}</text>
+      <text class="stats-label">待付款</text>
+    </view>
+    <view class="stats-item" bindtap="goToOrders" data-status="2">
+      <text class="stats-number">{{stats.deliveringCount}}</text>
+      <text class="stats-label">待收货</text>
+    </view>
+    <view class="stats-item" bindtap="goToOrders" data-status="3">
+      <text class="stats-number">{{stats.reviewCount}}</text>
+      <text class="stats-label">待评价</text>
+    </view>
+    <view class="stats-item" bindtap="goToOrders" data-status="4">
+      <text class="stats-number">{{stats.completedCount}}</text>
+      <text class="stats-label">已完成</text>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <view class="menu-group">
+      <view class="menu-item" bindtap="goToAddress">
+        <view class="menu-icon">
+          <icon type="location" size="20" color="#ff6b35"></icon>
+        </view>
+        <text class="menu-label">收货地址</text>
+        <icon type="arrow" size="16" color="#999"></icon>
+      </view>
+      
+      <view class="menu-item" bindtap="goToCoupons">
+        <view class="menu-icon">
+          <icon type="gift" size="20" color="#ff6b35"></icon>
+        </view>
+        <text class="menu-label">优惠券</text>
+        <view class="menu-badge" wx:if="{{couponCount > 0}}">{{couponCount}}</view>
+        <icon type="arrow" size="16" color="#999"></icon>
+      </view>
+      
+      <view class="menu-item" bindtap="goToPoints">
+        <view class="menu-icon">
+          <icon type="star" size="20" color="#ff6b35"></icon>
+        </view>
+        <text class="menu-label">积分中心</text>
+        <text class="menu-value">{{points}}积分</text>
+        <icon type="arrow" size="16" color="#999"></icon>
+      </view>
+    </view>
+
+    <view class="menu-group">
+      <view class="menu-item" bindtap="goToCustomerService">
+        <view class="menu-icon">
+          <icon type="service" size="20" color="#ff6b35"></icon>
+        </view>
+        <text class="menu-label">客服中心</text>
+        <icon type="arrow" size="16" color="#999"></icon>
+      </view>
+      
+      <view class="menu-item" bindtap="goToFeedback">
+        <view class="menu-icon">
+          <icon type="comment" size="20" color="#ff6b35"></icon>
+        </view>
+        <text class="menu-label">意见反馈</text>
+        <icon type="arrow" size="16" color="#999"></icon>
+      </view>
+      
+      <view class="menu-item" bindtap="goToAbout">
+        <view class="menu-icon">
+          <icon type="info" size="20" color="#ff6b35"></icon>
+        </view>
+        <text class="menu-label">关于我们</text>
+        <icon type="arrow" size="16" color="#999"></icon>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section" wx:if="{{isLoggedIn}}">
+    <button class="btn-logout" bindtap="logout">退出登录</button>
+  </view>
+</view> 

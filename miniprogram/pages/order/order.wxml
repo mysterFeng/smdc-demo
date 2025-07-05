@@ -1,0 +1,59 @@
+<view class="order-container">
+  <!-- 订单状态切换 -->
+  <view class="status-tabs">
+    <view 
+      class="tab-item {{currentStatus === item.value ? 'active' : ''}}" 
+      wx:for="{{statusTabs}}" 
+      wx:key="value"
+      bindtap="switchStatus"
+      data-status="{{item.value}}"
+    >
+      <text>{{item.label}}</text>
+    </view>
+  </view>
+
+  <!-- 订单列表 -->
+  <scroll-view class="order-list" scroll-y="true" wx:if="{{orders.length > 0}}">
+    <view class="order-item" wx:for="{{orders}}" wx:key="id" bindtap="goToOrderDetail" data-id="{{item.id}}">
+      <view class="order-header">
+        <text class="order-no">订单号：{{item.orderNo}}</text>
+        <text class="order-status {{item.statusClass}}">{{item.statusText}}</text>
+      </view>
+      
+      <view class="order-content">
+        <view class="dish-list">
+          <view class="dish-item" wx:for="{{item.dishes}}" wx:key="id" wx:for-item="dish">
+            <image class="dish-image" src="{{dish.imageUrl}}" mode="aspectFill"></image>
+            <view class="dish-info">
+              <view class="dish-name">{{dish.name}}</view>
+              <view class="dish-quantity">x{{dish.quantity}}</view>
+            </view>
+            <view class="dish-price">¥{{dish.price}}</view>
+          </view>
+        </view>
+        
+        <view class="order-summary">
+          <text class="total-count">共{{item.totalCount}}件商品</text>
+          <text class="total-amount">实付：¥{{item.actualAmount}}</text>
+        </view>
+      </view>
+      
+      <view class="order-footer">
+        <view class="order-time">{{item.createTime}}</view>
+        <view class="order-actions">
+          <button class="btn-action" wx:if="{{item.status === 1}}" bindtap="cancelOrder" data-id="{{item.id}}">取消订单</button>
+          <button class="btn-action" wx:if="{{item.status === 2}}" bindtap="confirmReceive" data-id="{{item.id}}">确认收货</button>
+          <button class="btn-action" wx:if="{{item.status === 3}}" bindtap="goToReview" data-id="{{item.id}}">评价</button>
+          <button class="btn-action" wx:if="{{item.status === 4}}" bindtap="reorder" data-id="{{item.id}}">再来一单</button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 空状态 -->
+  <view class="empty-orders" wx:else>
+    <image src="/images/empty-order.png" class="empty-image"></image>
+    <text class="empty-text">暂无订单</text>
+    <button class="btn-go-menu" bindtap="goToMenu">去点餐</button>
+  </view>
+</view> 

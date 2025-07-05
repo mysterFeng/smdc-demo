@@ -1,0 +1,94 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 顶部搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input">
+      <icon type="search" size="16" color="#999"></icon>
+      <input placeholder="搜索菜品" bindinput="onSearchInput" value="{{searchKeyword}}" />
+    </view>
+  </view>
+
+  <!-- 轮播图 -->
+  <view class="banner-section">
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500" circular="{{true}}">
+      <swiper-item wx:for="{{banners}}" wx:key="id">
+        <image src="{{item.imageUrl}}" mode="aspectFill" class="banner-image" bindtap="onBannerTap" data-item="{{item}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 快捷功能 -->
+  <view class="quick-actions">
+    <view class="action-item" bindtap="goToMenu">
+      <image src="/images/icon-menu.png" class="action-icon"></image>
+      <text class="action-text">点餐菜单</text>
+    </view>
+    <view class="action-item" bindtap="goToOrder">
+      <image src="/images/icon-order.png" class="action-icon"></image>
+      <text class="action-text">我的订单</text>
+    </view>
+    <view class="action-item" bindtap="goToProfile">
+      <image src="/images/icon-profile.png" class="action-icon"></image>
+      <text class="action-text">个人中心</text>
+    </view>
+    <view class="action-item" bindtap="goToAddress">
+      <image src="/images/icon-address.png" class="action-icon"></image>
+      <text class="action-text">收货地址</text>
+    </view>
+  </view>
+
+  <!-- 推荐菜品 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">推荐菜品</text>
+      <text class="section-more" bindtap="goToMenu">查看更多</text>
+    </view>
+    <view class="dish-grid">
+      <view class="dish-item" wx:for="{{recommendDishes}}" wx:key="id" bindtap="goToDishDetail" data-dish="{{item}}">
+        <image src="{{item.imageUrl}}" mode="aspectFill" class="dish-image"></image>
+        <view class="dish-info">
+          <text class="dish-name">{{item.name}}</text>
+          <text class="dish-desc">{{item.description}}</text>
+          <view class="dish-bottom">
+            <text class="dish-price">¥{{item.price}}</text>
+            <view class="dish-action">
+              <view class="quantity-control" wx:if="{{item.quantity > 0}}">
+                <text class="quantity-btn" bindtap="decreaseQuantity" data-id="{{item.id}}">-</text>
+                <text class="quantity-text">{{item.quantity}}</text>
+                <text class="quantity-btn" bindtap="increaseQuantity" data-id="{{item.id}}">+</text>
+              </view>
+              <text class="add-btn" wx:else bindtap="addToCart" data-dish="{{item}}">+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 店铺信息 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">店铺信息</text>
+    </view>
+    <view class="shop-info">
+      <view class="shop-item">
+        <text class="shop-label">营业时间：</text>
+        <text class="shop-value">{{shopInfo.businessHours}}</text>
+      </view>
+      <view class="shop-item">
+        <text class="shop-label">联系电话：</text>
+        <text class="shop-value" bindtap="callShop">{{shopInfo.phone}}</text>
+      </view>
+      <view class="shop-item">
+        <text class="shop-label">店铺地址：</text>
+        <text class="shop-value">{{shopInfo.address}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 用户未登录提示 -->
+  <view class="login-tip" wx:if="{{!userInfo}}">
+    <text>登录后享受更多服务</text>
+    <button class="btn btn-primary btn-small" bindtap="goToLogin">立即登录</button>
+  </view>
+</view> 

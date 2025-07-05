@@ -1,0 +1,308 @@
+.order-detail-container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 120rpx;
+}
+
+/* 订单状态 */
+.status-section {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  color: #fff;
+  padding: 60rpx 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status-info {
+  flex: 1;
+}
+
+.status-text {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.status-desc {
+  display: block;
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+
+.status-icon {
+  margin-left: 40rpx;
+}
+
+/* 通用区域样式 */
+.delivery-section,
+.goods-section,
+.order-info-section,
+.price-section {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+  border-left: 6rpx solid #ff6b35;
+  padding-left: 20rpx;
+}
+
+/* 配送信息 */
+.delivery-item {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.delivery-item:last-child {
+  margin-bottom: 0;
+}
+
+.delivery-item .label {
+  width: 160rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.delivery-item .value {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 商品信息 */
+.goods-list {
+  margin-top: 20rpx;
+}
+
+.goods-item {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.goods-item:last-child {
+  border-bottom: none;
+}
+
+.goods-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  margin-right: 20rpx;
+  background-color: #f0f0f0;
+}
+
+.goods-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goods-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.goods-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 15rpx;
+  line-height: 1.4;
+}
+
+.goods-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #ff6b35;
+}
+
+.quantity {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 订单信息 */
+.info-item {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.info-item .label {
+  width: 160rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.info-item .value {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 价格明细 */
+.price-list {
+  margin-top: 20rpx;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.price-item.total {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.discount {
+  color: #ff6b35;
+}
+
+.total-price {
+  color: #ff6b35;
+  font-size: 36rpx;
+}
+
+.price-divider {
+  height: 1rpx;
+  background-color: #f5f5f5;
+  margin: 20rpx 0;
+}
+
+/* 底部操作按钮 */
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-top: 1rpx solid #eee;
+  padding: 20rpx 30rpx;
+  z-index: 1000;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+
+.btn-action {
+  flex: 1;
+  background-color: #fff;
+  color: #666;
+  border: 1rpx solid #ddd;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.btn-action.primary {
+  background-color: #ff6b35;
+  color: #fff;
+  border-color: #ff6b35;
+}
+
+.btn-action:active {
+  background-color: #f5f5f5;
+}
+
+.btn-action.primary:active {
+  background-color: #e55a2b;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .status-section {
+    padding: 40rpx 30rpx;
+  }
+  
+  .status-text {
+    font-size: 32rpx;
+  }
+  
+  .status-desc {
+    font-size: 24rpx;
+  }
+  
+  .delivery-section,
+  .goods-section,
+  .order-info-section,
+  .price-section {
+    padding: 25rpx;
+  }
+  
+  .section-title {
+    font-size: 30rpx;
+  }
+  
+  .delivery-item .label,
+  .info-item .label {
+    width: 140rpx;
+    font-size: 26rpx;
+  }
+  
+  .delivery-item .value,
+  .info-item .value {
+    font-size: 26rpx;
+  }
+  
+  .goods-image {
+    width: 100rpx;
+    height: 100rpx;
+  }
+  
+  .goods-name {
+    font-size: 28rpx;
+  }
+  
+  .goods-desc {
+    font-size: 22rpx;
+  }
+  
+  .price-item {
+    font-size: 26rpx;
+  }
+  
+  .price-item.total {
+    font-size: 30rpx;
+  }
+  
+  .total-price {
+    font-size: 32rpx;
+  }
+  
+  .action-bar {
+    padding: 15rpx 25rpx;
+  }
+  
+  .btn-action {
+    padding: 20rpx;
+    font-size: 26rpx;
+  }
+} 

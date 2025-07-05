@@ -1,0 +1,183 @@
+.address-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+}
+
+/* 地址列表 */
+.address-list {
+  flex: 1;
+  padding: 20rpx;
+}
+
+.address-item {
+  background-color: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.address-content {
+  padding: 30rpx;
+}
+
+.address-info {
+  margin-bottom: 20rpx;
+}
+
+.address-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.contact-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-right: 20rpx;
+}
+
+.contact-phone {
+  font-size: 28rpx;
+  color: #666;
+  margin-right: 20rpx;
+}
+
+.default-tag {
+  background-color: #ff6b35;
+  color: #fff;
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+.address-detail {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.4;
+}
+
+.address-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f5f5f5;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.action-item icon {
+  margin-right: 8rpx;
+}
+
+.delete-text {
+  color: #ff4757;
+}
+
+/* 空状态 */
+.empty-address {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 40rpx;
+}
+
+.empty-image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 40rpx;
+  opacity: 0.6;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.empty-tip {
+  font-size: 26rpx;
+  color: #ccc;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* 底部添加按钮 */
+.add-address-bar {
+  background-color: #fff;
+  border-top: 1rpx solid #eee;
+  padding: 20rpx 30rpx;
+}
+
+.btn-add-address {
+  width: 100%;
+  background-color: #ff6b35;
+  color: #fff;
+  border: none;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-add-address icon {
+  margin-right: 10rpx;
+}
+
+.btn-add-address:active {
+  background-color: #e55a2b;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .address-list {
+    padding: 15rpx;
+  }
+  
+  .address-content {
+    padding: 25rpx;
+  }
+  
+  .contact-name {
+    font-size: 30rpx;
+  }
+  
+  .contact-phone {
+    font-size: 26rpx;
+  }
+  
+  .address-detail {
+    font-size: 26rpx;
+  }
+  
+  .address-actions {
+    gap: 25rpx;
+  }
+  
+  .action-item {
+    font-size: 24rpx;
+  }
+  
+  .add-address-bar {
+    padding: 15rpx 20rpx;
+  }
+  
+  .btn-add-address {
+    padding: 20rpx;
+    font-size: 28rpx;
+  }
+} 

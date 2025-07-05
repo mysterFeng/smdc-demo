@@ -1,0 +1,12 @@
+target/
+.git/
+.gitignore
+README.md
+开发流程.md
+*.md
+.idea/
+*.iml
+.vscode/
+node_modules/
+*.log
+.DS_Store 

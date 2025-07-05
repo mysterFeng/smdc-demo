@@ -1,0 +1,109 @@
+<view class="order-detail-container">
+  <!-- 订单状态 -->
+  <view class="status-section">
+    <view class="status-info">
+      <text class="status-text">{{orderInfo.statusText}}</text>
+      <text class="status-desc">{{orderInfo.statusDesc}}</text>
+    </view>
+    <view class="status-icon">
+      <icon type="success" size="40" color="#34c759" wx:if="{{orderInfo.status === 3}}"></icon>
+      <icon type="waiting" size="40" color="#ff6b35" wx:elif="{{orderInfo.status === 1}}"></icon>
+      <icon type="info" size="40" color="#007aff" wx:elif="{{orderInfo.status === 2}}"></icon>
+    </view>
+  </view>
+
+  <!-- 配送信息 -->
+  <view class="delivery-section">
+    <view class="section-title">配送信息</view>
+    <view class="delivery-info">
+      <view class="delivery-item">
+        <text class="label">收货人：</text>
+        <text class="value">{{orderInfo.deliveryName}}</text>
+      </view>
+      <view class="delivery-item">
+        <text class="label">联系电话：</text>
+        <text class="value">{{orderInfo.deliveryPhone}}</text>
+      </view>
+      <view class="delivery-item">
+        <text class="label">配送地址：</text>
+        <text class="value">{{orderInfo.deliveryAddress}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="goods-section">
+    <view class="section-title">商品信息</view>
+    <view class="goods-list">
+      <view class="goods-item" wx:for="{{orderInfo.dishes}}" wx:key="id">
+        <image class="goods-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+        <view class="goods-info">
+          <view class="goods-name">{{item.name}}</view>
+          <view class="goods-desc">{{item.description}}</view>
+          <view class="goods-price">
+            <text class="price">¥{{item.price}}</text>
+            <text class="quantity">x{{item.quantity}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="order-info-section">
+    <view class="section-title">订单信息</view>
+    <view class="order-info">
+      <view class="info-item">
+        <text class="label">订单号：</text>
+        <text class="value">{{orderInfo.orderNo}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">下单时间：</text>
+        <text class="value">{{orderInfo.createTime}}</text>
+      </view>
+      <view class="info-item" wx:if="{{orderInfo.paymentTime}}">
+        <text class="label">支付时间：</text>
+        <text class="value">{{orderInfo.paymentTime}}</text>
+      </view>
+      <view class="info-item" wx:if="{{orderInfo.remark}}">
+        <text class="label">备注：</text>
+        <text class="value">{{orderInfo.remark}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 价格明细 -->
+  <view class="price-section">
+    <view class="section-title">价格明细</view>
+    <view class="price-list">
+      <view class="price-item">
+        <text>商品总额</text>
+        <text>¥{{orderInfo.totalAmount}}</text>
+      </view>
+      <view class="price-item" wx:if="{{orderInfo.discountAmount > 0}}">
+        <text>优惠金额</text>
+        <text class="discount">-¥{{orderInfo.discountAmount}}</text>
+      </view>
+      <view class="price-item">
+        <text>配送费</text>
+        <text>¥{{orderInfo.deliveryFee}}</text>
+      </view>
+      <view class="price-divider"></view>
+      <view class="price-item total">
+        <text>实付金额</text>
+        <text class="total-price">¥{{orderInfo.actualAmount}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作按钮 -->
+  <view class="action-bar">
+    <view class="action-buttons">
+      <button class="btn-action" wx:if="{{orderInfo.status === 1}}" bindtap="cancelOrder">取消订单</button>
+      <button class="btn-action primary" wx:if="{{orderInfo.status === 1}}" bindtap="payOrder">立即支付</button>
+      <button class="btn-action" wx:if="{{orderInfo.status === 2}}" bindtap="confirmReceive">确认收货</button>
+      <button class="btn-action" wx:if="{{orderInfo.status === 3}}" bindtap="goToReview">评价订单</button>
+      <button class="btn-action" wx:if="{{orderInfo.status === 4}}" bindtap="reorder">再来一单</button>
+    </view>
+  </view>
+</view> 

@@ -1,0 +1,98 @@
+<view class="cart-container">
+  <!-- 购物车为空时的提示 -->
+  <view class="empty-cart" wx:if="{{cartItems.length === 0}}">
+    <image src="/images/empty-cart.png" class="empty-image"></image>
+    <text class="empty-text">购物车空空如也~</text>
+    <button class="btn-go-menu" bindtap="goToMenu">去点餐</button>
+  </view>
+
+  <!-- 购物车有商品时的内容 -->
+  <view class="cart-content" wx:else>
+    <!-- 商品列表 -->
+    <scroll-view class="cart-list" scroll-y="true">
+      <view class="cart-item" wx:for="{{cartItems}}" wx:key="id">
+        <view class="item-info">
+          <image class="item-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+          <view class="item-details">
+            <view class="item-name">{{item.name}}</view>
+            <view class="item-desc">{{item.description}}</view>
+            <view class="item-price">¥{{item.price}}</view>
+          </view>
+        </view>
+        <view class="item-actions">
+          <view class="quantity-control">
+            <button class="btn-minus" bindtap="decreaseQuantity" data-id="{{item.id}}">-</button>
+            <text class="quantity">{{item.quantity}}</text>
+            <button class="btn-plus" bindtap="increaseQuantity" data-id="{{item.id}}">+</button>
+          </view>
+          <button class="btn-delete" bindtap="removeItem" data-id="{{item.id}}">删除</button>
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- 优惠券选择 -->
+    <view class="coupon-section">
+      <view class="coupon-item" bindtap="selectCoupon">
+        <view class="coupon-info">
+          <text class="coupon-label">优惠券</text>
+          <text class="coupon-value" wx:if="{{selectedCoupon}}">{{selectedCoupon.name}}</text>
+          <text class="coupon-placeholder" wx:else>选择优惠券</text>
+        </view>
+        <icon type="arrow" size="16" color="#999"></icon>
+      </view>
+    </view>
+
+    <!-- 配送地址 -->
+    <view class="address-section">
+      <view class="address-item" bindtap="selectAddress">
+        <view class="address-info">
+          <text class="address-label">配送地址</text>
+          <view class="address-details" wx:if="{{selectedAddress}}">
+            <text class="address-name">{{selectedAddress.name}} {{selectedAddress.phone}}</text>
+            <text class="address-address">{{selectedAddress.address}}</text>
+          </view>
+          <text class="address-placeholder" wx:else>选择配送地址</text>
+        </view>
+        <icon type="arrow" size="16" color="#999"></icon>
+      </view>
+    </view>
+
+    <!-- 备注 -->
+    <view class="remark-section">
+      <view class="remark-item">
+        <text class="remark-label">备注</text>
+        <input class="remark-input" placeholder="请输入备注信息" value="{{remark}}" bindinput="onRemarkInput" />
+      </view>
+    </view>
+
+    <!-- 价格明细 -->
+    <view class="price-section">
+      <view class="price-item">
+        <text>商品总额</text>
+        <text>¥{{totalAmount}}</text>
+      </view>
+      <view class="price-item" wx:if="{{discountAmount > 0}}">
+        <text>优惠金额</text>
+        <text class="discount">-¥{{discountAmount}}</text>
+      </view>
+      <view class="price-item">
+        <text>配送费</text>
+        <text>¥{{deliveryFee}}</text>
+      </view>
+      <view class="price-divider"></view>
+      <view class="price-item total">
+        <text>实付金额</text>
+        <text class="total-price">¥{{actualAmount}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部结算栏 -->
+  <view class="checkout-bar" wx:if="{{cartItems.length > 0}}">
+    <view class="checkout-info">
+      <text class="total-label">合计：</text>
+      <text class="total-amount">¥{{actualAmount}}</text>
+    </view>
+    <button class="btn-checkout" bindtap="checkout">立即结算</button>
+  </view>
+</view> 

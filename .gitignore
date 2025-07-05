@@ -1,0 +1,65 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# Java
+*.class
+*.log
+*.jar
+*.war
+*.iml
+
+# Node.js
+node_modules/
+logs/
+*.log
+dist/
+
+# 微信小程序
+miniprogram/images/dishes/*.png
+miniprogram/images/dishes/*.jpg
+miniprogram/images/tab/*.png
+miniprogram/images/*.png
+miniprogram/images/*.jpg
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# 系统文件
+Thumbs.db
+
+# 其他
+.env
+.env.*

@@ -1,0 +1,172 @@
+.address-edit-container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 120rpx;
+}
+
+/* 表单区域 */
+.form-section {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.form-label {
+  width: 160rpx;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.form-input {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.form-textarea {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333;
+  min-height: 80rpx;
+  line-height: 1.4;
+}
+
+.picker-value {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.placeholder {
+  color: #999;
+}
+
+/* 选项区域 */
+.options-section {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.option-item:last-child {
+  border-bottom: none;
+}
+
+.option-label {
+  font-size: 30rpx;
+  color: #333;
+}
+
+/* 删除按钮 */
+.delete-section {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding: 0 30rpx;
+}
+
+.btn-delete {
+  width: 100%;
+  background-color: #fff;
+  color: #ff4757;
+  border: 1rpx solid #ff4757;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.btn-delete:active {
+  background-color: #fff5f5;
+}
+
+/* 底部保存按钮 */
+.save-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-top: 1rpx solid #eee;
+  padding: 20rpx 30rpx;
+  z-index: 1000;
+}
+
+.btn-save {
+  width: 100%;
+  background-color: #ff6b35;
+  color: #fff;
+  border: none;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.btn-save:active {
+  background-color: #e55a2b;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .form-item {
+    padding: 25rpx;
+  }
+  
+  .form-label {
+    width: 140rpx;
+    font-size: 28rpx;
+  }
+  
+  .form-input,
+  .form-textarea,
+  .picker-value {
+    font-size: 28rpx;
+  }
+  
+  .option-item {
+    padding: 25rpx;
+  }
+  
+  .option-label {
+    font-size: 28rpx;
+  }
+  
+  .delete-section {
+    padding: 0 25rpx;
+  }
+  
+  .btn-delete {
+    padding: 20rpx;
+    font-size: 28rpx;
+  }
+  
+  .save-bar {
+    padding: 15rpx 25rpx;
+  }
+  
+  .btn-save {
+    padding: 20rpx;
+    font-size: 28rpx;
+  }
+} 

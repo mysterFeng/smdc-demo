@@ -1,0 +1,54 @@
+<view class="login-container">
+  <!-- 背景装饰 -->
+  <view class="bg-decoration">
+    <view class="circle circle-1"></view>
+    <view class="circle circle-2"></view>
+    <view class="circle circle-3"></view>
+  </view>
+
+  <!-- 主要内容 -->
+  <view class="login-content">
+    <!-- Logo区域 -->
+    <view class="logo-section">
+      <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+      <text class="app-name">智能点餐</text>
+      <text class="app-slogan">美味触手可及</text>
+    </view>
+
+    <!-- 登录按钮区域 -->
+    <view class="login-section">
+      <button class="btn-wechat-login" bindtap="wechatLogin">
+        <image class="wechat-icon" src="/images/wechat-icon.png" mode="aspectFit"></image>
+        <text>微信一键登录</text>
+      </button>
+      
+      <view class="login-tips">
+        <text>登录即表示同意</text>
+        <text class="link" bindtap="goToUserAgreement">《用户协议》</text>
+        <text>和</text>
+        <text class="link" bindtap="goToPrivacyPolicy">《隐私政策》</text>
+      </view>
+    </view>
+
+    <!-- 其他登录方式 -->
+    <view class="other-login">
+      <view class="divider">
+        <view class="line"></view>
+        <text class="divider-text">其他登录方式</text>
+        <view class="line"></view>
+      </view>
+      
+      <view class="other-methods">
+        <button class="btn-phone-login" bindtap="phoneLogin">
+          <icon type="phone" size="20" color="#666"></icon>
+          <text>手机号登录</text>
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部信息 -->
+  <view class="footer">
+    <text class="footer-text">版本 1.0.0</text>
+  </view>
+</view> 

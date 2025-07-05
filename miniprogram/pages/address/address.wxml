@@ -1,0 +1,46 @@
+<view class="address-container">
+  <!-- 地址列表 -->
+  <scroll-view class="address-list" scroll-y="true" wx:if="{{addresses.length > 0}}">
+    <view class="address-item" wx:for="{{addresses}}" wx:key="id">
+      <view class="address-content" bindtap="selectAddress" data-id="{{item.id}}">
+        <view class="address-info">
+          <view class="address-header">
+            <text class="contact-name">{{item.name}}</text>
+            <text class="contact-phone">{{item.phone}}</text>
+            <view class="default-tag" wx:if="{{item.isDefault}}">默认</view>
+          </view>
+          <view class="address-detail">{{item.address}}</view>
+        </view>
+        <view class="address-actions">
+          <view class="action-item" bindtap="setDefault" data-id="{{item.id}}" wx:if="{{!item.isDefault}}">
+            <icon type="success" size="16" color="#999"></icon>
+            <text>设为默认</text>
+          </view>
+          <view class="action-item" bindtap="editAddress" data-id="{{item.id}}">
+            <icon type="edit" size="16" color="#999"></icon>
+            <text>编辑</text>
+          </view>
+          <view class="action-item" bindtap="deleteAddress" data-id="{{item.id}}">
+            <icon type="delete" size="16" color="#ff4757"></icon>
+            <text class="delete-text">删除</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 空状态 -->
+  <view class="empty-address" wx:else>
+    <image src="/images/empty-address.png" class="empty-image"></image>
+    <text class="empty-text">暂无收货地址</text>
+    <text class="empty-tip">添加收货地址，享受便捷配送服务</text>
+  </view>
+
+  <!-- 底部添加按钮 -->
+  <view class="add-address-bar">
+    <button class="btn-add-address" bindtap="addAddress">
+      <icon type="add" size="20" color="#fff"></icon>
+      <text>添加收货地址</text>
+    </button>
+  </view>
+</view> 

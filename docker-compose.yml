@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # MySQL 数据库
+  mysql:
+    image: mysql:8.0
+    container_name: ordering-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: ordering_system
+      MYSQL_USER: ordering_user
+      MYSQL_PASSWORD: ordering_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - ordering-network
+
+  # Redis 缓存
+  redis:
+    image: redis:6.2-alpine
+    container_name: ordering-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - ordering-network
+
+  # 项目应用（可选，如果你想要容器化部署）
+  app:
+    build: .
+    container_name: ordering-app
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ordering_system?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: ordering_user
+      SPRING_DATASOURCE_PASSWORD: ordering_pass
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+    networks:
+      - ordering-network
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  ordering-network:
+    driver: bridge 
