@@ -612,6 +612,52 @@ curl -X POST http://192.168.1.8:8080/api/v1/users/phone-login \
 **结果**：
 - 用户下单后返回"我的优惠券"页面，页面会自动刷新，优惠券状态实时更新，体验正常。
 
+## 数据库导出操作记录
+
+**需求**：
+将本地MySQL数据库 `ordering_system` 导出为SQL文件，用于备份和迁移。
+
+**环境情况**：
+- 本地未安装MySQL客户端工具
+- 系统已安装Docker
+- 数据库运行在 localhost:3306
+
+**解决方案**：
+使用Docker容器运行MySQL客户端进行导出：
+
+```bash
+# 导出完整数据库（包含结构和数据）
+docker run --rm -v $(pwd):/backup mysql:8.0 mysqldump \
+  -h host.docker.internal \
+  -P 3306 \
+  -u root \
+  -p12345678 \
+  ordering_system > demo_database_backup.sql
+```
+
+**导出结果**：
+- 文件：`demo_database_backup.sql`
+- 大小：25KB
+- 行数：397行
+- 内容：完整的数据库结构、数据、索引、约束等
+
+**恢复命令**：
+```bash
+# 恢复数据库
+docker run --rm -v $(pwd):/backup mysql:8.0 mysql \
+  -h host.docker.internal \
+  -P 3306 \
+  -u root \
+  -p12345678 \
+  ordering_system < demo_database_backup.sql
+```
+
+**优势**：
+- 无需安装MySQL客户端
+- 使用官方Docker镜像，安全可靠
+- 支持跨平台操作
+- 导出文件完整，可直接用于恢复
+
 ---
 
 > 本记录详细记录了2025-07-05至2025-07-06日智能点餐小程序前后端联调遇到的所有问题及解决方案，包含具体的代码修改，供后续开发参考。
