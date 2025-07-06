@@ -1,0 +1,78 @@
+<view class="points-container">
+  <!-- 积分头部 -->
+  <view class="points-header">
+    <view class="points-info">
+      <view class="points-title">我的积分</view>
+      <view class="points-number">{{totalPoints}}</view>
+      <view class="points-desc">可用于抵扣订单金额</view>
+    </view>
+    <view class="points-actions">
+      <button class="btn-exchange" bindtap="goToExchange">积分兑换</button>
+    </view>
+  </view>
+
+  <!-- 积分规则 -->
+  <view class="rules-section">
+    <view class="rules-title">积分规则</view>
+    <view class="rules-content">
+      <view class="rule-item">
+        <text class="rule-dot">•</text>
+        <text class="rule-text">消费1元可获得1积分</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-dot">•</text>
+        <text class="rule-text">100积分可抵扣1元</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-dot">•</text>
+        <text class="rule-text">积分有效期为1年</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-dot">•</text>
+        <text class="rule-text">单笔订单最多可抵扣订单金额的20%</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 积分记录 -->
+  <view class="records-section">
+    <view class="records-header">
+      <text class="records-title">积分记录</text>
+      <text class="records-more" bindtap="goToRecords">查看更多</text>
+    </view>
+    
+    <view class="records-list">
+      <view class="record-item" wx:for="{{records}}" wx:key="id">
+        <view class="record-info">
+          <view class="record-title">{{item.title}}</view>
+          <view class="record-time">{{item.createTime}}</view>
+        </view>
+        <view class="record-points {{item.type === 'earn' ? 'earn' : 'spend'}}">
+          <text wx:if="{{item.type === 'earn'}}">+</text>
+          <text wx:else>-</text>
+          <text>{{item.points}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 积分兑换商品 -->
+  <view class="exchange-section">
+    <view class="exchange-header">
+      <text class="exchange-title">积分兑换</text>
+      <text class="exchange-more" bindtap="goToExchange">查看更多</text>
+    </view>
+    
+    <view class="exchange-list">
+      <view class="exchange-item" wx:for="{{exchangeItems}}" wx:key="id" bindtap="exchangeItem" data-item="{{item}}">
+        <image class="exchange-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+        <view class="exchange-info">
+          <view class="exchange-name">{{item.name}}</view>
+          <view class="exchange-desc">{{item.description}}</view>
+          <view class="exchange-points">{{item.points}}积分</view>
+        </view>
+        <button class="btn-exchange-item">立即兑换</button>
+      </view>
+    </view>
+  </view>
+</view> 

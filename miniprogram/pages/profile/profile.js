@@ -35,16 +35,36 @@ Page({
 
   // 加载统计数据
   loadStats() {
-    // 模拟统计数据
-    this.setData({
-      stats: {
-        pendingCount: 2,
-        deliveringCount: 1,
-        reviewCount: 3,
-        completedCount: 8
-      },
-      couponCount: 5,
-      points: 1280
+    // 调用后端API获取统计数据
+    api.getUserOrderStats(this.data.userId).then(res => {
+      if (res.code === 200) {
+        this.setData({
+          stats: res.data || {
+            pendingCount: 0,
+            deliveringCount: 0,
+            reviewCount: 0,
+            completedCount: 0
+          }
+        });
+      }
+    });
+    
+    // 获取优惠券统计
+    api.getUserCouponStats(this.data.userId).then(res => {
+      if (res.code === 200) {
+        this.setData({
+          couponCount: res.data.availableCount || 0
+        });
+      }
+    });
+    
+    // 获取积分信息
+    api.getUserPoints(this.data.userId).then(res => {
+      if (res.code === 200) {
+        this.setData({
+          points: res.data.points || 0
+        });
+      }
     });
   },
 

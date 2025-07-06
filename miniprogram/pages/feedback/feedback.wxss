@@ -1,0 +1,195 @@
+.feedback-container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 40rpx;
+}
+
+/* 通用样式 */
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+/* 反馈类型 */
+.type-section {
+  background-color: #fff;
+  margin: 20rpx;
+  border-radius: 12rpx;
+  padding: 30rpx;
+}
+
+.type-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.type-item {
+  padding: 15rpx 30rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 25rpx;
+  background-color: #fafafa;
+}
+
+.type-item.active {
+  border-color: #ff6b35;
+  background-color: #fff2f0;
+}
+
+.type-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.type-item.active .type-text {
+  color: #ff6b35;
+  font-weight: bold;
+}
+
+/* 反馈内容 */
+.content-section {
+  background-color: #fff;
+  margin: 0 20rpx 20rpx;
+  border-radius: 12rpx;
+  padding: 30rpx;
+}
+
+.content-wrapper {
+  position: relative;
+}
+
+.feedback-content {
+  width: 100%;
+  min-height: 200rpx;
+  padding: 20rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: #333;
+  background-color: #fafafa;
+  box-sizing: border-box;
+}
+
+.content-count {
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 图片上传 */
+.image-section {
+  background-color: #fff;
+  margin: 0 20rpx 20rpx;
+  border-radius: 12rpx;
+  padding: 30rpx;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-bottom: 15rpx;
+}
+
+.image-item {
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+}
+
+.image-delete {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background-color: #ff4d4f;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.image-upload {
+  width: 160rpx;
+  height: 160rpx;
+  border: 2rpx dashed #d0d0d0;
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafafa;
+}
+
+.upload-icon {
+  font-size: 48rpx;
+  color: #d0d0d0;
+  margin-bottom: 10rpx;
+}
+
+.upload-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.image-tip {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 联系方式 */
+.contact-section {
+  background-color: #fff;
+  margin: 0 20rpx 20rpx;
+  border-radius: 12rpx;
+  padding: 30rpx;
+}
+
+.contact-wrapper {
+  border: 2rpx solid #e0e0e0;
+  border-radius: 8rpx;
+  background-color: #fafafa;
+}
+
+.contact-input {
+  width: 100%;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* 提交按钮 */
+.button-section {
+  padding: 0 20rpx;
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: #ff6b35;
+  color: #fff;
+  border: none;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.btn-submit:disabled {
+  background-color: #ccc;
+  color: #999;
+} 

@@ -1,0 +1,238 @@
+.points-container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 40rpx;
+}
+
+/* 积分头部 */
+.points-header {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  padding: 60rpx 40rpx 40rpx;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.points-info {
+  flex: 1;
+}
+
+.points-title {
+  font-size: 28rpx;
+  opacity: 0.9;
+  margin-bottom: 20rpx;
+}
+
+.points-number {
+  font-size: 60rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.points-desc {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.btn-exchange {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  border-radius: 25rpx;
+  padding: 15rpx 30rpx;
+  font-size: 26rpx;
+  margin: 0;
+}
+
+/* 积分规则 */
+.rules-section {
+  background-color: #fff;
+  margin: 20rpx;
+  border-radius: 12rpx;
+  padding: 30rpx;
+}
+
+.rules-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.rules-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.rule-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.rule-dot {
+  color: #ff6b35;
+  font-size: 28rpx;
+  margin-right: 15rpx;
+  margin-top: 2rpx;
+}
+
+.rule-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 积分记录 */
+.records-section {
+  background-color: #fff;
+  margin: 0 20rpx 20rpx;
+  border-radius: 12rpx;
+  padding: 30rpx;
+}
+
+.records-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.records-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.records-more {
+  font-size: 26rpx;
+  color: #ff6b35;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-info {
+  flex: 1;
+}
+
+.record-title {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.record-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.record-points {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.record-points.earn {
+  color: #52c41a;
+}
+
+.record-points.spend {
+  color: #ff4d4f;
+}
+
+/* 积分兑换 */
+.exchange-section {
+  background-color: #fff;
+  margin: 0 20rpx;
+  border-radius: 12rpx;
+  padding: 30rpx;
+}
+
+.exchange-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.exchange-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.exchange-more {
+  font-size: 26rpx;
+  color: #ff6b35;
+}
+
+.exchange-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.exchange-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  border: 1rpx solid #f0f0f0;
+  border-radius: 8rpx;
+  background-color: #fafafa;
+}
+
+.exchange-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.exchange-info {
+  flex: 1;
+}
+
+.exchange-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.exchange-desc {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.exchange-points {
+  font-size: 26rpx;
+  color: #ff6b35;
+  font-weight: bold;
+}
+
+.btn-exchange-item {
+  background-color: #ff6b35;
+  color: #fff;
+  border: none;
+  border-radius: 20rpx;
+  padding: 10rpx 20rpx;
+  font-size: 24rpx;
+  margin: 0;
+} 

@@ -1,0 +1,93 @@
+<view class="about-container">
+  <!-- 应用信息 -->
+  <view class="app-info">
+    <image class="app-logo" src="/images/app-logo.png" mode="aspectFit"></image>
+    <view class="app-name">智能点餐小程序</view>
+    <view class="app-version">版本 1.0.0</view>
+  </view>
+
+  <!-- 功能介绍 -->
+  <view class="features-section">
+    <view class="section-title">功能介绍</view>
+    <view class="features-list">
+      <view class="feature-item">
+        <text class="feature-dot">•</text>
+        <text class="feature-text">在线点餐：浏览菜品，添加购物车，在线下单</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-dot">•</text>
+        <text class="feature-text">优惠券：多种优惠券，享受更多优惠</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-dot">•</text>
+        <text class="feature-text">积分系统：消费赚积分，积分可抵扣</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-dot">•</text>
+        <text class="feature-text">订单管理：实时查看订单状态，跟踪配送</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-dot">•</text>
+        <text class="feature-text">地址管理：多地址管理，快速选择配送地址</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系我们 -->
+  <view class="contact-section">
+    <view class="section-title">联系我们</view>
+    <view class="contact-list">
+      <view class="contact-item" bindtap="copyText" data-text="400-123-4567">
+        <view class="contact-icon">📞</view>
+        <view class="contact-info">
+          <view class="contact-label">客服电话</view>
+          <view class="contact-value">400-123-4567</view>
+        </view>
+        <view class="contact-action">复制</view>
+      </view>
+      
+      <view class="contact-item" bindtap="copyText" data-text="support@example.com">
+        <view class="contact-icon">📧</view>
+        <view class="contact-info">
+          <view class="contact-label">客服邮箱</view>
+          <view class="contact-value">support@example.com</view>
+        </view>
+        <view class="contact-action">复制</view>
+      </view>
+      
+      <view class="contact-item" bindtap="copyText" data-text="9:00-18:00">
+        <view class="contact-icon">🕐</view>
+        <view class="contact-info">
+          <view class="contact-label">服务时间</view>
+          <view class="contact-value">9:00-18:00</view>
+        </view>
+        <view class="contact-action">复制</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 公司信息 -->
+  <view class="company-section">
+    <view class="section-title">公司信息</view>
+    <view class="company-info">
+      <view class="company-item">
+        <text class="company-label">公司名称：</text>
+        <text class="company-value">智能点餐科技有限公司</text>
+      </view>
+      <view class="company-item">
+        <text class="company-label">公司地址：</text>
+        <text class="company-value">北京市朝阳区xxx街道xxx号</text>
+      </view>
+      <view class="company-item">
+        <text class="company-label">营业执照：</text>
+        <text class="company-value">京ICP备xxxxxxxx号</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 版权信息 -->
+  <view class="copyright-section">
+    <text class="copyright-text">© 2025 智能点餐小程序</text>
+    <text class="copyright-text">版权所有</text>
+  </view>
+</view> 

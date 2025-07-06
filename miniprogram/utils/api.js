@@ -422,7 +422,40 @@ const api = {
   validateCoupon: (userId, userCouponId, orderAmount) => request({ url: `/v1/coupons/validate`, method: 'POST', data: { userId, userCouponId, orderAmount } }),
   
   // 获取地址详情
-  getAddressById: (id, userId) => request({ url: `/v1/addresses/${id}?userId=${userId}` })
+  getAddressById: (id, userId) => request({ url: `/v1/addresses/${id}?userId=${userId}` }),
+  
+  // ========== 用户相关接口 ==========
+  
+  // 获取用户信息
+  getUserInfo: (userId) => request({ url: `/v1/users/${userId}` }),
+  
+  // 更新用户信息
+  updateUserInfo: (userId, data) => request({ url: `/v1/users/${userId}`, method: 'PUT', data }),
+  
+  // 获取用户积分
+  getUserPoints: (userId) => request({ url: `/v1/users/${userId}/points` }),
+  
+  // 获取积分记录
+  getPointsRecords: (userId, page = 0, size = 10) => request({ url: `/v1/users/${userId}/points/records?page=${page}&size=${size}` }),
+  
+  // 积分兑换
+  exchangePoints: (userId, itemId) => request({ url: `/v1/users/${userId}/points/exchange`, method: 'POST', data: { itemId } }),
+  
+  // ========== 反馈相关接口 ==========
+  
+  // 提交反馈
+  submitFeedback: (userId, data) => request({ url: `/v1/feedback?userId=${userId}`, method: 'POST', data }),
+  
+  // 获取反馈列表
+  getFeedbackList: (userId, page = 0, size = 10) => request({ url: `/v1/feedback?userId=${userId}&page=${page}&size=${size}` }),
+  
+  // ========== 统计相关接口 ==========
+  
+  // 获取用户订单统计
+  getUserOrderStats: (userId) => request({ url: `/v1/users/${userId}/order-stats` }),
+  
+  // 获取用户优惠券统计
+  getUserCouponStats: (userId) => request({ url: `/v1/users/${userId}/coupon-stats` })
 };
 
 module.exports = {

@@ -1,0 +1,69 @@
+<view class="coupons-container">
+  <!-- 状态切换 -->
+  <view class="tab-section">
+    <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+      <text class="tab-text">可用优惠券</text>
+      <text class="tab-count" wx:if="{{availableCount > 0}}">{{availableCount}}</text>
+    </view>
+    <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+      <text class="tab-text">已使用</text>
+      <text class="tab-count" wx:if="{{usedCount > 0}}">{{usedCount}}</text>
+    </view>
+    <view class="tab-item {{currentTab === 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">
+      <text class="tab-text">已过期</text>
+      <text class="tab-count" wx:if="{{expiredCount > 0}}">{{expiredCount}}</text>
+    </view>
+  </view>
+
+  <!-- 优惠券列表 -->
+  <view class="coupons-list">
+    <view class="coupon-item {{item.status !== 0 ? 'disabled' : ''}}" 
+          wx:for="{{coupons}}" 
+          wx:key="id"
+          bindtap="useCoupon"
+          data-coupon="{{item}}">
+      
+      <!-- 优惠券左侧 -->
+      <view class="coupon-left">
+        <view class="coupon-value">
+          <text class="value-symbol">¥</text>
+          <text class="value-number">{{item.couponValue}}</text>
+        </view>
+        <view class="coupon-condition">
+          满{{item.couponMinAmount}}可用
+        </view>
+      </view>
+      
+      <!-- 优惠券右侧 -->
+      <view class="coupon-right">
+        <view class="coupon-name">{{item.couponName}}</view>
+        <view class="coupon-desc">{{item.couponDescription}}</view>
+        <view class="coupon-date">
+          {{item.receivedAt}} - {{item.expiredAt}}
+        </view>
+        <view class="coupon-status">
+          <text class="status-text {{item.status === 0 ? 'available' : item.status === 1 ? 'used' : 'expired'}}">
+            {{item.statusDesc}}
+          </text>
+        </view>
+      </view>
+      
+      <!-- 优惠券状态遮罩 -->
+      <view class="coupon-mask" wx:if="{{item.status !== 0}}">
+        <text class="mask-text">{{item.status === 1 ? '已使用' : '已过期'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{coupons.length === 0}}">
+    <image class="empty-icon" src="/images/empty-coupon.png" mode="aspectFit"></image>
+    <text class="empty-text">暂无优惠券</text>
+    <button class="btn-get-coupon" bindtap="goToCouponCenter">去领券中心</button>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <button class="btn-coupon-center" bindtap="goToCouponCenter">领券中心</button>
+  </view>
+</view> 
