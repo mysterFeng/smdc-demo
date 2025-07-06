@@ -1208,3 +1208,626 @@ This generated password is for development use only. Your security configuration
 2025-07-06 07:14:13 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 2 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
 2025-07-06 07:14:13 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
 2025-07-06 07:14:13 [http-nio-8080-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes/recommend?limit=4
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes/recommend?limit=4] with attributes [permitAll]
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes/recommend?limit=4
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes/recommend?limit=4", parameters={masked}
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getRecommendDishes(int)
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[DishVO(id=1, name=宫保鸡丁, description=经典川菜，鸡肉配花生米, price=28.00 (truncated)...]
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:18:49 [http-nio-8080-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /v1/users/phone-login
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [POST /v1/users/phone-login] with attributes [permitAll]
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /v1/users/phone-login
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/api/v1/users/phone-login", parameters={}
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.UserController#phoneLogin(UserPhoneLoginDTO)
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [UserPhoneLoginDTO(phone=13800000001, password=123456)]
+2025-07-06 07:19:07 [http-nio-8080-exec-3] INFO  com.myster.demo.controller.UserController - 用户手机号登录请求，phone: 13800000001
+2025-07-06 07:19:07 [http-nio-8080-exec-3] INFO  com.myster.demo.service.impl.UserServiceImpl - 用户手机号登录，phone: 13800000001
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=登录成功, data=UserVO(id=2, nickname=myster, avatar=null, phone=13800000001, ge (truncated)...]
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:19:07 [http-nio-8080-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/categories/active
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/categories/active] with attributes [permitAll]
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/categories/active
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/categories/active", parameters={}
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.CategoryController#getActiveCategories()
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?page=0&size=20
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?page=0&size=20] with attributes [permitAll]
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?page=0&size=20
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?page=0&size=20", parameters={masked}
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[CategoryVO(id=1, name=热菜, description=各种热炒菜品, sortOrder=1, s (truncated)...]
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:19:17 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:19:17 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:26:58 [SpringApplicationShutdownHook] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-06 07:26:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-07-06 07:26:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-07-06 07:27:06 [main] INFO  com.myster.demo.DemoApplication - Starting DemoApplication using Java 1.8.0_421 on liufengdeMac-mini.local with PID 99966 (/Users/liufeng/Desktop/WorkSpace/study/demo/target/classes started by liufeng in /Users/liufeng/Desktop/WorkSpace/study/demo)
+2025-07-06 07:27:06 [main] DEBUG com.myster.demo.DemoApplication - Running with Spring Boot v2.6.13, Spring v5.3.23
+2025-07-06 07:27:06 [main] INFO  com.myster.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-06 07:27:07 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-07-06 07:27:07 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-06 07:27:07 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 3 JPA repository interfaces.
+2025-07-06 07:27:07 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-07-06 07:27:07 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-07-06 07:27:07 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.myster.demo.repository.CategoryRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-07-06 07:27:07 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.myster.demo.repository.DishRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-07-06 07:27:07 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.myster.demo.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-07-06 07:27:07 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2025-07-06 07:27:07 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-07-06 07:27:07 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-06 07:27:07 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2025-07-06 07:27:07 [main] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-07-06 07:27:07 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 672 ms
+2025-07-06 07:27:07 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-06 07:27:07 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.12.Final
+2025-07-06 07:27:07 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-07-06 07:27:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-06 07:27:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-06 07:27:07 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2025-07-06 07:27:08 [main] INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-07-06 07:27:08 [main] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-06 07:27:08 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-06 07:27:08 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 4c4e6bc5-aedd-4277-b4f2-01bbc5a767a6
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/v1/users/login']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/v1/users/phone-login']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/v1/users/register']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/v1/users/send-verify-code']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/v1/users/test']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/v1/dishes/**']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/v1/categories/**']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/v3/api-docs/**']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/swagger-ui/**']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/swagger-ui.html']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/swagger-resources/**']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/webjars/**']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/actuator/**']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/static/**']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/public/**']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for Ant [pattern='/']
+2025-07-06 07:27:08 [main] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [authenticated] for any request
+2025-07-06 07:27:08 [main] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@12925d2, org.springframework.security.web.context.SecurityContextPersistenceFilter@1fb61db4, org.springframework.security.web.header.HeaderWriterFilter@3b18009f, org.springframework.security.web.authentication.logout.LogoutFilter@3d00e981, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2eb9c7ad, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3220833f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@612531a3, org.springframework.security.web.session.SessionManagementFilter@1db5de29, org.springframework.security.web.access.ExceptionTranslationFilter@45b2d17b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@9863ed5]
+2025-07-06 07:27:08 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-06 07:27:08 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 42 mappings in 'requestMappingHandlerMapping'
+2025-07-06 07:27:08 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2025-07-06 07:27:08 [main] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-06 07:27:08 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-06 07:27:08 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-07-06 07:27:08 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/api'
+2025-07-06 07:27:08 [main] INFO  com.myster.demo.DemoApplication - Started DemoApplication in 2.243 seconds (JVM running for 2.394)
+2025-07-06 07:27:34 [http-nio-8080-exec-1] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-06 07:27:34 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@df04d12
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@c555e1e
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-07-06 07:27:34 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/categories/active
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/categories/active] with attributes [permitAll]
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/categories/active
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/categories/active", parameters={}
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.CategoryController#getActiveCategories()
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[CategoryVO(id=1, name=热菜, description=各种热炒菜品, sortOrder=1, s (truncated)...]
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:27:34 [http-nio-8080-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/categories/active
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/categories/active] with attributes [permitAll]
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/categories/active
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/categories/active", parameters={}
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.CategoryController#getActiveCategories()
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[CategoryVO(id=1, name=热菜, description=各种热炒菜品, sortOrder=1, s (truncated)...]
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:33:16 [http-nio-8080-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes/recommend?limit=4
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes/recommend?limit=4] with attributes [permitAll]
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes/recommend?limit=4
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes/recommend?limit=4", parameters={masked}
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getRecommendDishes(int)
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[DishVO(id=1, name=宫保鸡丁, description=经典川菜，鸡肉配花生米, price=28.00 (truncated)...]
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:34:20 [http-nio-8080-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/categories/active
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/categories/active] with attributes [permitAll]
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/categories/active
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/categories/active", parameters={}
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?page=0&size=20
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?page=0&size=20] with attributes [permitAll]
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?page=0&size=20
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?page=0&size=20", parameters={masked}
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.CategoryController#getActiveCategories()
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[CategoryVO(id=1, name=热菜, description=各种热炒菜品, sortOrder=1, s (truncated)...]
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:34:23 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:34:23 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=2&page=0&size=20
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=2&page=0&size=20] with attributes [permitAll]
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=2&page=0&size=20
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=2&page=0&size=20", parameters={masked}
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:34:35 [http-nio-8080-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=3&page=0&size=20] with attributes [permitAll]
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=3&page=0&size=20", parameters={masked}
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:34:36 [http-nio-8080-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=4&page=0&size=20] with attributes [permitAll]
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=4&page=0&size=20", parameters={masked}
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:34:36 [http-nio-8080-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=5&page=0&size=20
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=5&page=0&size=20] with attributes [permitAll]
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=5&page=0&size=20
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=5&page=0&size=20", parameters={masked}
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:34:37 [http-nio-8080-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes] with attributes [permitAll]
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes", parameters={}
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 2 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 07:35:28 [http-nio-8080-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=4&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=4&page=0&size=20", parameters={masked}
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:33 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=3&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=3&page=0&size=20", parameters={masked}
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:34 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=2&page=0&size=20
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=2&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=2&page=0&size=20
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=2&page=0&size=20", parameters={masked}
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:35 [http-nio-8080-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?page=0&size=20
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?page=0&size=20
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?page=0&size=20", parameters={masked}
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:39 [http-nio-8080-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=2&page=0&size=20
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=2&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=2&page=0&size=20
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=2&page=0&size=20", parameters={masked}
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:44 [http-nio-8080-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=3&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=3&page=0&size=20", parameters={masked}
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:52 [http-nio-8080-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=4&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=4&page=0&size=20", parameters={masked}
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:54 [http-nio-8080-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=5&page=0&size=20
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=5&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=5&page=0&size=20
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=5&page=0&size=20", parameters={masked}
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:54 [http-nio-8080-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=4&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=4&page=0&size=20", parameters={masked}
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:55 [http-nio-8080-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=3&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=3&page=0&size=20", parameters={masked}
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:56 [http-nio-8080-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=3&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=3&page=0&size=20", parameters={masked}
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:57 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=2&page=0&size=20
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=2&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=2&page=0&size=20
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=2&page=0&size=20", parameters={masked}
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:58 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?page=0&size=20
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?page=0&size=20] with attributes [permitAll]
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?page=0&size=20
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?page=0&size=20", parameters={masked}
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:00:58 [http-nio-8080-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=4&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=4&page=0&size=20", parameters={masked}
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:01:01 [http-nio-8080-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=5&page=0&size=20
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=5&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=5&page=0&size=20
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=5&page=0&size=20", parameters={masked}
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:01:02 [http-nio-8080-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=4&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=4&page=0&size=20", parameters={masked}
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:06:38 [http-nio-8080-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes/search?keyword=%E7%99%BD
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes/search?keyword=%E7%99%BD] with attributes [permitAll]
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes/search?keyword=%E7%99%BD
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes/search?keyword=%E7%99%BD", parameters={masked}
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#searchDishes(String)
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[DishVO(id=9, name=白米饭, description=香软可口的白米饭, price=2.00, ori (truncated)...]
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:06:45 [http-nio-8080-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/categories/active
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/categories/active] with attributes [permitAll]
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/categories/active
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/categories/active", parameters={}
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.CategoryController#getActiveCategories()
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?page=0&size=20
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?page=0&size=20] with attributes [permitAll]
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?page=0&size=20
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?page=0&size=20", parameters={masked}
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[CategoryVO(id=1, name=热菜, description=各种热炒菜品, sortOrder=1, s (truncated)...]
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:06:48 [http-nio-8080-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:06:48 [http-nio-8080-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=3&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=3&page=0&size=20", parameters={masked}
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:06:52 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=4&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=4&page=0&size=20", parameters={masked}
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:06:53 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:06:54 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:06:54 [http-nio-8080-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:06:54 [http-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:06:54 [http-nio-8080-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=3&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:06:54 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:06:54 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=3&page=0&size=20", parameters={masked}
+2025-07-06 08:06:54 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:06:54 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:06:55 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:06:55 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:06:55 [http-nio-8080-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=4&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=4&page=0&size=20", parameters={masked}
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:06:55 [http-nio-8080-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?page=0&size=20
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?page=0&size=20] with attributes [permitAll]
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?page=0&size=20
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?page=0&size=20", parameters={masked}
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:06:58 [http-nio-8080-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes/search?keyword=%E7%99%BD
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes/search?keyword=%E7%99%BD] with attributes [permitAll]
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes/search?keyword=%E7%99%BD
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes/search?keyword=%E7%99%BD", parameters={masked}
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#searchDishes(String)
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[DishVO(id=9, name=白米饭, description=香软可口的白米饭, price=2.00, ori (truncated)...]
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:04 [http-nio-8080-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/categories/active
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/categories/active] with attributes [permitAll]
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/categories/active
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/categories/active", parameters={}
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.CategoryController#getActiveCategories()
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?page=0&size=20
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?page=0&size=20] with attributes [permitAll]
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?page=0&size=20
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?page=0&size=20", parameters={masked}
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[CategoryVO(id=1, name=热菜, description=各种热炒菜品, sortOrder=1, s (truncated)...]
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:06 [http-nio-8080-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:06 [http-nio-8080-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=2&page=0&size=20
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=2&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=2&page=0&size=20
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=2&page=0&size=20", parameters={masked}
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:08 [http-nio-8080-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=3&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=3&page=0&size=20
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=3&page=0&size=20", parameters={masked}
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:09 [http-nio-8080-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?categoryId=4&page=0&size=20] with attributes [permitAll]
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?categoryId=4&page=0&size=20
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?categoryId=4&page=0&size=20", parameters={masked}
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:10 [http-nio-8080-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes/search?keyword=%E7%88%B1
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes/search?keyword=%E7%88%B1] with attributes [permitAll]
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes/search?keyword=%E7%88%B1
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes/search?keyword=%E7%88%B1", parameters={masked}
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#searchDishes(String)
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[], timestamp=2025-07-06T08:07:13.604)]
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:13 [http-nio-8080-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/categories/active
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/categories/active] with attributes [permitAll]
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/categories/active
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/categories/active", parameters={}
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.CategoryController#getActiveCategories()
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?page=0&size=20
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?page=0&size=20] with attributes [permitAll]
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?page=0&size=20
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?page=0&size=20", parameters={masked}
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[CategoryVO(id=1, name=热菜, description=各种热炒菜品, sortOrder=1, s (truncated)...]
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:14 [http-nio-8080-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:14 [http-nio-8080-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes/search?keyword=%E7%99%BD
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes/search?keyword=%E7%99%BD] with attributes [permitAll]
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes/search?keyword=%E7%99%BD
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes/search?keyword=%E7%99%BD", parameters={masked}
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#searchDishes(String)
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[DishVO(id=9, name=白米饭, description=香软可口的白米饭, price=2.00, ori (truncated)...]
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:16 [http-nio-8080-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/categories/active
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /v1/dishes?page=0&size=20
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/categories/active] with attributes [permitAll]
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/categories/active
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /v1/dishes?page=0&size=20] with attributes [permitAll]
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /v1/dishes?page=0&size=20
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/categories/active", parameters={}
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - GET "/api/v1/dishes?page=0&size=20", parameters={masked}
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.CategoryController#getActiveCategories()
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.myster.demo.controller.DishController#getDishList(int, int, Long)
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=[CategoryVO(id=1, name=热菜, description=各种热炒菜品, sortOrder=1, s (truncated)...]
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:20 [http-nio-8080-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=200, message=success, data=Page 1 of 1 containing com.myster.demo.vo.DishVO instances, t (truncated)...]
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2025-07-06 08:07:20 [http-nio-8080-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request

@@ -1,7 +1,7 @@
 // API基础配置
 // 开发环境：使用内网穿透域名或配置的合法域名
 // 生产环境：使用正式的HTTPS域名
-const BASE_URL = 'http://192.168.1.8:8080/api'; // 开发环境使用局域网IP，注意添加/api前缀
+const BASE_URL = 'http://localhost:8080/api'; // 开发环境使用局域网IP，注意添加/api前缀
 
 // 请求封装
 const request = (options) => {

@@ -380,26 +380,43 @@ curl -X POST http://192.168.1.8:8080/api/v1/users/phone-login \
 
 **验证结果：** ✅ 菜单页逻辑更新完成
 
-### 接口测试结果
+### 问题5：数据库中文乱码问题
+**问题描述：** 接口返回的分类和菜品数据出现中文乱码（如"çƒ­èœ"、"å‡‰èœ"）
+**原因分析：** 
+- 数据库字符编码设置不正确
+- JDBC连接字符串缺少完整的字符编码参数
+- 之前插入的测试数据使用了错误的编码
+
+**解决方案：**
+1. 更新数据库连接字符串，添加完整的字符编码参数：
+   ```
+   jdbc:mysql://localhost:3306/ordering_system?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&characterSetResults=utf8&connectionCollation=utf8_general_ci
+   ```
+2. 更新JPA配置，添加字符编码设置
+3. 清理数据库中的乱码数据，重新插入正确的测试数据
+4. 创建clean_and_reset_data.sql脚本，包含12个菜品数据
+
+**验证结果：** ✅ 所有中文显示正常，无乱码
+
+### 接口测试结果（修复后）
 
 #### 分类接口
-- `GET /api/v1/categories/active` ✅ 返回5个分类
-- `GET /api/v1/categories` ✅ 返回所有分类
+- `GET /api/v1/categories/active` ✅ 返回5个分类，中文正常显示
 
-#### 菜品接口
-- `GET /api/v1/dishes` ✅ 返回所有菜品（分页）
+#### 菜品接口  
+- `GET /api/v1/dishes` ✅ 返回12个菜品，中文正常显示
 - `GET /api/v1/dishes?categoryId=1` ✅ 返回热菜分类菜品
 - `GET /api/v1/dishes?categoryId=2` ✅ 返回凉菜分类菜品
 - `GET /api/v1/dishes?categoryId=3` ✅ 返回汤类分类菜品
 - `GET /api/v1/dishes?categoryId=4` ✅ 返回主食分类菜品
 - `GET /api/v1/dishes?categoryId=5` ✅ 返回饮品分类菜品
 
-### 数据库测试数据验证
-- **热菜分类**：4个菜品（宫保鸡丁、麻婆豆腐等）
-- **凉菜分类**：2个菜品（凉拌黄瓜等）
-- **汤类分类**：2个菜品（紫菜蛋花汤等）
-- **主食分类**：2个菜品（白米饭等）
-- **饮品分类**：2个菜品（可乐等）
+### 数据库测试数据（修复后）
+- **热菜分类**：4个菜品（宫保鸡丁、麻婆豆腐、红烧肉、糖醋里脊）
+- **凉菜分类**：2个菜品（凉拌黄瓜、口水鸡）
+- **汤类分类**：2个菜品（紫菜蛋花汤、酸辣汤）
+- **主食分类**：2个菜品（白米饭、阳春面）
+- **饮品分类**：2个菜品（可乐、柠檬水）
 
 ### 下一步计划
 1. 测试小程序菜单页与后端接口的联调
