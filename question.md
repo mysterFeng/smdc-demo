@@ -332,3 +332,102 @@ curl -X POST http://192.168.1.8:8080/api/v1/users/phone-login \
 ---
 
 > 本记录详细记录了2025-07-05日智能点餐小程序前后端联调遇到的所有问题及解决方案，包含具体的代码修改，供后续开发参考。 
+
+# 点餐小程序开发问题记录
+
+## 2025-07-06 菜品/分类接口开发与小程序联调
+
+### 问题1：Controller路径映射问题
+**问题描述：** 新添加的CategoryController、DishController等接口返回404错误
+**原因分析：** 
+- application.yml中设置了`context-path: /api`
+- Controller中的@RequestMapping使用了`/api/v1/...`
+- 实际访问路径变成了`/api/api/v1/...`，导致404
+
+**解决方案：** 
+1. 修改所有Controller的路径映射，去掉`/api`前缀
+2. CategoryController: `/api/v1/categories` → `/v1/categories`
+3. DishController: `/api/v1/dishes` → `/v1/dishes`
+4. 其他测试Controller同样修改
+
+**验证结果：** ✅ 接口正常返回数据
+
+### 问题2：按分类过滤菜品功能缺失
+**问题描述：** DishController的getDishList方法不支持按分类过滤
+**解决方案：**
+1. 在DishController中添加categoryId参数支持
+2. 在DishService接口中添加getDishListByCategory方法
+3. 在DishServiceImpl中实现分页查询逻辑
+4. DishRepository中已有findByCategoryIdAndStatus方法
+
+**验证结果：** ✅ 按分类过滤功能正常工作
+
+### 问题3：小程序API配置更新
+**问题描述：** 小程序API需要适配后端新的接口结构
+**解决方案：**
+1. 更新getDishList方法，支持categoryId参数
+2. 更新getDishesByCategory方法，支持分页参数
+3. 修改BASE_URL为局域网IP：`http://192.168.1.8:8080/api`
+
+**验证结果：** ✅ API配置更新完成
+
+### 问题4：菜单页数据加载逻辑更新
+**问题描述：** 菜单页需要适配后端分页数据结构
+**解决方案：**
+1. 更新loadDishes方法，处理分页数据结构（res.data.content）
+2. 更新filterDishesByCategory方法，使用新的API调用
+3. 添加调试日志，便于排查问题
+
+**验证结果：** ✅ 菜单页逻辑更新完成
+
+### 接口测试结果
+
+#### 分类接口
+- `GET /api/v1/categories/active` ✅ 返回5个分类
+- `GET /api/v1/categories` ✅ 返回所有分类
+
+#### 菜品接口
+- `GET /api/v1/dishes` ✅ 返回所有菜品（分页）
+- `GET /api/v1/dishes?categoryId=1` ✅ 返回热菜分类菜品
+- `GET /api/v1/dishes?categoryId=2` ✅ 返回凉菜分类菜品
+- `GET /api/v1/dishes?categoryId=3` ✅ 返回汤类分类菜品
+- `GET /api/v1/dishes?categoryId=4` ✅ 返回主食分类菜品
+- `GET /api/v1/dishes?categoryId=5` ✅ 返回饮品分类菜品
+
+### 数据库测试数据验证
+- **热菜分类**：4个菜品（宫保鸡丁、麻婆豆腐等）
+- **凉菜分类**：2个菜品（凉拌黄瓜等）
+- **汤类分类**：2个菜品（紫菜蛋花汤等）
+- **主食分类**：2个菜品（白米饭等）
+- **饮品分类**：2个菜品（可乐等）
+
+### 下一步计划
+1. 测试小程序菜单页与后端接口的联调
+2. 验证分类切换和菜品展示功能
+3. 测试搜索功能
+4. 完善购物车功能
+
+---
+
+## 历史问题记录
+
+### 2025-07-06 JDK环境配置问题
+**问题描述：** 编译时提示"No compiler is provided in this environment"
+**解决方案：** 永久设置JAVA_HOME和PATH环境变量到JDK路径
+**验证结果：** ✅ 编译成功
+
+### 2025-07-06 微信小程序网络配置问题
+**问题描述：** 小程序请求接口时提示"url not in domain list"
+**解决方案：** 
+1. 开发者工具中勾选"不校验合法域名"
+2. 将BASE_URL改为电脑局域网IP
+**验证结果：** ✅ 网络请求正常
+
+### 2025-07-06 用户注册功能开发
+**问题描述：** 需要完善用户注册功能
+**解决方案：** 
+1. 实现验证码服务（Redis存储）
+2. 完善UserService注册逻辑
+3. 配置Spring Security放行注册接口
+4. 开发小程序注册页面
+**验证结果：** ✅ 注册功能完整实现 

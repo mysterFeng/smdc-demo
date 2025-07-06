@@ -65,9 +65,45 @@ Page({
 
   // 加载菜品数据
   loadDishes() {
-    // 这里应该调用API获取菜品数据
-    // 暂时使用模拟数据
-    console.log('加载菜品数据');
+    const { api } = require('../../utils/api.js');
+    
+    console.log('开始加载菜品数据...');
+    
+    // 获取分类列表
+    api.getActiveCategories().then(res => {
+      console.log('获取分类成功:', res);
+      if (res.code === 200) {
+        this.setData({
+          categories: res.data
+        });
+      }
+    }).catch(err => {
+      console.error('获取分类失败:', err);
+      wx.showToast({
+        title: '获取分类失败',
+        icon: 'none'
+      });
+    });
+    
+    // 获取菜品列表（默认获取所有菜品）
+    api.getDishList(0, 20).then(res => {
+      console.log('获取菜品成功:', res);
+      if (res.code === 200) {
+        const dishes = res.data.content.map(dish => ({
+          ...dish,
+          quantity: 0
+        }));
+        this.setData({
+          dishes: dishes
+        });
+      }
+    }).catch(err => {
+      console.error('获取菜品失败:', err);
+      wx.showToast({
+        title: '获取菜品失败',
+        icon: 'none'
+      });
+    });
   },
 
   // 搜索输入
@@ -80,13 +116,31 @@ Page({
 
   // 筛选菜品
   filterDishes() {
-    const keyword = this.data.searchKeyword.toLowerCase();
-    const filteredDishes = this.data.dishes.filter(dish => 
-      dish.name.toLowerCase().includes(keyword) || 
-      dish.description.toLowerCase().includes(keyword)
-    );
-    this.setData({
-      dishes: filteredDishes
+    const keyword = this.data.searchKeyword;
+    if (!keyword.trim()) {
+      // 如果搜索关键词为空，重新加载所有菜品
+      this.loadDishes();
+      return;
+    }
+    
+    const { api } = require('../../utils/api.js');
+    
+    api.searchDishes(keyword).then(res => {
+      if (res.code === 200) {
+        const dishes = res.data.map(dish => ({
+          ...dish,
+          quantity: 0
+        }));
+        this.setData({
+          dishes: dishes
+        });
+      }
+    }).catch(err => {
+      console.error('搜索菜品失败:', err);
+      wx.showToast({
+        title: '搜索菜品失败',
+        icon: 'none'
+      });
     });
   },
 
@@ -101,52 +155,47 @@ Page({
 
   // 按分类筛选菜品
   filterDishesByCategory(categoryId) {
-    // 重新加载所有菜品，然后按分类筛选
-    const allDishes = [
-      {
-        id: 1,
-        name: '宫保鸡丁',
-        description: '经典川菜，鸡肉鲜嫩，花生香脆',
-        price: 28.00,
-        originalPrice: 32.00,
-        imageUrl: '/images/dishes/gongbao-chicken.jpg',
-        categoryId: 1,
-        quantity: 0
-      },
-      {
-        id: 2,
-        name: '麻婆豆腐',
-        description: '麻辣鲜香，豆腐嫩滑',
-        price: 18.00,
-        originalPrice: 22.00,
-        imageUrl: '/images/dishes/mapo-tofu.jpg',
-        categoryId: 1,
-        quantity: 0
-      },
-      {
-        id: 3,
-        name: '白米饭',
-        description: '精选东北大米，粒粒分明',
-        price: 3.00,
-        imageUrl: '/images/dishes/rice.jpg',
-        categoryId: 2,
-        quantity: 0
-      },
-      {
-        id: 4,
-        name: '酸辣汤',
-        description: '开胃解腻，酸辣可口',
-        price: 12.00,
-        imageUrl: '/images/dishes/sour-soup.jpg',
-        categoryId: 4,
-        quantity: 0
-      }
-    ];
-
-    const filteredDishes = categoryId === 1 ? allDishes : allDishes.filter(dish => dish.categoryId === categoryId);
-    this.setData({
-      dishes: filteredDishes
-    });
+    const { api } = require('../../utils/api.js');
+    
+    if (categoryId === 1) {
+      // 如果是第一个分类（通常是"热菜"），获取所有菜品
+      api.getDishList(0, 20).then(res => {
+        if (res.code === 200) {
+          const dishes = res.data.content.map(dish => ({
+            ...dish,
+            quantity: 0
+          }));
+          this.setData({
+            dishes: dishes
+          });
+        }
+      }).catch(err => {
+        console.error('获取菜品失败:', err);
+        wx.showToast({
+          title: '获取菜品失败',
+          icon: 'none'
+        });
+      });
+    } else {
+      // 根据分类ID获取菜品
+      api.getDishesByCategory(categoryId, 0, 20).then(res => {
+        if (res.code === 200) {
+          const dishes = res.data.content.map(dish => ({
+            ...dish,
+            quantity: 0
+          }));
+          this.setData({
+            dishes: dishes
+          });
+        }
+      }).catch(err => {
+        console.error('获取分类菜品失败:', err);
+        wx.showToast({
+          title: '获取分类菜品失败',
+          icon: 'none'
+        });
+      });
+    }
   },
 
   // 添加到购物车

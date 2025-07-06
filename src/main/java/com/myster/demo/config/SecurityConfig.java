@@ -28,6 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 // 允许登录相关接口
                 .antMatchers("/v1/users/login", "/v1/users/phone-login", "/v1/users/register", "/v1/users/send-verify-code", "/v1/users/test").permitAll()
+                // 允许菜品相关接口（公开访问）
+                .antMatchers("/v1/dishes/**", "/v1/categories/**").permitAll()
                 // 允许SpringDoc OpenAPI相关路径
                 .antMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-resources/**", "/webjars/**").permitAll()
                 // 允许健康检查端点

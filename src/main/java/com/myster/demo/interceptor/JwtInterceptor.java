@@ -76,6 +76,8 @@ public class JwtInterceptor implements HandlerInterceptor {
                requestURI.startsWith("/v1/users/register") ||
                requestURI.startsWith("/v1/users/send-verify-code") ||
                requestURI.startsWith("/v1/users/test") ||
+               requestURI.startsWith("/v1/dishes") ||
+               requestURI.startsWith("/v1/categories") ||
                requestURI.startsWith("/error") ||
                requestURI.equals("/");
     }

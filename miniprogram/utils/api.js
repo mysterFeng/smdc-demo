@@ -1,7 +1,7 @@
 // API基础配置
 // 开发环境：使用内网穿透域名或配置的合法域名
 // 生产环境：使用正式的HTTPS域名
-const BASE_URL = 'http://127.0.0.1:8080/api'; // 开发环境使用127.0.0.1，注意添加/api前缀
+const BASE_URL = 'http://192.168.1.8:8080/api'; // 开发环境使用局域网IP，注意添加/api前缀
 
 // 请求封装
 const request = (options) => {
@@ -127,6 +127,78 @@ const api = {
       url: '/v1/users/send-verify-code',
       method: 'POST',
       data
+    });
+  },
+  
+  // ========== 菜品相关接口 ==========
+  
+  // 获取菜品列表（支持按分类过滤）
+  getDishList: (page = 0, size = 10, categoryId = null) => {
+    let url = `/v1/dishes?page=${page}&size=${size}`;
+    if (categoryId) {
+      url += `&categoryId=${categoryId}`;
+    }
+    return request({
+      url: url,
+      method: 'GET'
+    });
+  },
+  
+  // 根据分类获取菜品（分页）
+  getDishesByCategory: (categoryId, page = 0, size = 10) => {
+    return request({
+      url: `/v1/dishes?categoryId=${categoryId}&page=${page}&size=${size}`,
+      method: 'GET'
+    });
+  },
+  
+  // 获取菜品详情
+  getDishById: (id) => {
+    return request({
+      url: `/v1/dishes/${id}`,
+      method: 'GET'
+    });
+  },
+  
+  // 搜索菜品
+  searchDishes: (keyword) => {
+    return request({
+      url: `/v1/dishes/search?keyword=${encodeURIComponent(keyword)}`,
+      method: 'GET'
+    });
+  },
+  
+  // 获取推荐菜品
+  getRecommendDishes: (limit = 4) => {
+    return request({
+      url: `/v1/dishes/recommend?limit=${limit}`,
+      method: 'GET'
+    });
+  },
+  
+  // ========== 分类相关接口 ==========
+  
+  // 获取所有分类
+  getAllCategories: () => {
+    return request({
+      url: '/v1/categories',
+      method: 'GET'
+    });
+  },
+  
+  // 获取启用的分类
+  getActiveCategories: () => {
+    return request({
+      url: '/v1/categories/active',
+      method: 'GET'
+    });
+  },
+  
+  // 获取分类详情
+  getCategoryById: (id) => {
+    return request({
+      url: `/v1/categories/${id}`,
+      method: 'GET'
     });
   }
 };

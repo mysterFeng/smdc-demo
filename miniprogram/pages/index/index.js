@@ -50,44 +50,58 @@ Page({
 
   // 加载推荐菜品
   loadRecommendDishes() {
-    // 模拟数据，实际应该从后端获取
-    const mockDishes = [
-      {
-        id: 1,
-        name: '宫保鸡丁',
-        description: '经典川菜，口感麻辣鲜香',
-        price: 28.00,
-        imageUrl: '/images/dish1.jpg',
-        quantity: 0
-      },
-      {
-        id: 2,
-        name: '麻婆豆腐',
-        description: '嫩滑豆腐配麻辣肉末',
-        price: 18.00,
-        imageUrl: '/images/dish2.jpg',
-        quantity: 0
-      },
-      {
-        id: 3,
-        name: '水煮鱼',
-        description: '新鲜草鱼，麻辣鲜香',
-        price: 48.00,
-        imageUrl: '/images/dish3.jpg',
-        quantity: 0
-      },
-      {
-        id: 4,
-        name: '回锅肉',
-        description: '肥而不腻，香辣可口',
-        price: 32.00,
-        imageUrl: '/images/dish4.jpg',
-        quantity: 0
+    const { api } = require('../../utils/api.js');
+    
+    api.getRecommendDishes(4).then(res => {
+      if (res.code === 200) {
+        const dishes = res.data.map(dish => ({
+          ...dish,
+          quantity: 0
+        }));
+        this.setData({
+          recommendDishes: dishes
+        });
       }
-    ];
-
-    this.setData({
-      recommendDishes: mockDishes
+    }).catch(err => {
+      console.error('获取推荐菜品失败:', err);
+      // 如果API调用失败，使用默认数据
+      const mockDishes = [
+        {
+          id: 1,
+          name: '宫保鸡丁',
+          description: '经典川菜，口感麻辣鲜香',
+          price: 28.00,
+          imageUrl: '/images/dish1.jpg',
+          quantity: 0
+        },
+        {
+          id: 2,
+          name: '麻婆豆腐',
+          description: '嫩滑豆腐配麻辣肉末',
+          price: 18.00,
+          imageUrl: '/images/dish2.jpg',
+          quantity: 0
+        },
+        {
+          id: 3,
+          name: '水煮鱼',
+          description: '新鲜草鱼，麻辣鲜香',
+          price: 48.00,
+          imageUrl: '/images/dish3.jpg',
+          quantity: 0
+        },
+        {
+          id: 4,
+          name: '回锅肉',
+          description: '肥而不腻，香辣可口',
+          price: 32.00,
+          imageUrl: '/images/dish4.jpg',
+          quantity: 0
+        }
+      ];
+      this.setData({
+        recommendDishes: mockDishes
+      });
     });
   },
 
