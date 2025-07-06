@@ -201,19 +201,50 @@ Page({
   // 添加到购物车
   addToCart(e) {
     const dishId = e.currentTarget.dataset.id;
-    const dishes = this.data.dishes.map(dish => {
-      if (dish.id === dishId) {
-        return { ...dish, quantity: dish.quantity + 1 };
-      }
-      return dish;
-    });
+    const dish = this.data.dishes.find(d => d.id === dishId);
     
-    this.setData({ dishes });
-    this.updateCartInfo();
+    if (!dish) {
+      wx.showToast({
+        title: '菜品不存在',
+        icon: 'none'
+      });
+      return;
+    }
     
-    wx.showToast({
-      title: '已添加到购物车',
-      icon: 'success'
+    // 获取当前用户ID（这里暂时使用固定值，后续从登录信息获取）
+    const userId = wx.getStorageSync('userId') || 2;
+    
+    const { api } = require('../../utils/api.js');
+    
+    // 调用后端API添加菜品到购物车
+    api.addToCart(userId, {
+      dishId: dishId,
+      quantity: 1,
+      remark: ''
+    }).then(res => {
+      console.log('添加到购物车成功:', res);
+      
+      // 更新本地菜品数量
+      const dishes = this.data.dishes.map(d => {
+        if (d.id === dishId) {
+          return { ...d, quantity: d.quantity + 1 };
+        }
+        return d;
+      });
+      
+      this.setData({ dishes });
+      this.updateCartInfo();
+      
+      wx.showToast({
+        title: '已添加到购物车',
+        icon: 'success'
+      });
+    }).catch(err => {
+      console.error('添加到购物车失败:', err);
+      wx.showToast({
+        title: err.message || '添加失败',
+        icon: 'none'
+      });
     });
   },
 

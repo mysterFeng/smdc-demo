@@ -37,9 +37,29 @@ Page({
 
   // 加载购物车数据
   loadCartData() {
-    // 从本地存储或全局状态获取购物车数据
-    const cartItems = wx.getStorageSync('cartItems') || [];
-    this.setData({ cartItems });
+    // 获取当前用户ID（这里暂时使用固定值，后续从登录信息获取）
+    const userId = wx.getStorageSync('userId') || 2;
+    
+    const { api } = require('../../utils/api.js');
+    
+    // 从后端获取购物车数据
+    api.getUserCart(userId).then(res => {
+      console.log('获取购物车成功:', res);
+      if (res.code === 200) {
+        this.setData({ 
+          cartItems: res.data.items || [],
+          totalAmount: res.data.totalAmount || 0,
+          selectedTotalAmount: res.data.selectedTotalAmount || 0
+        });
+        this.calculatePrice();
+      }
+    }).catch(err => {
+      console.error('获取购物车失败:', err);
+      wx.showToast({
+        title: '获取购物车失败',
+        icon: 'none'
+      });
+    });
   },
 
   // 保存购物车数据
@@ -50,49 +70,86 @@ Page({
   // 增加商品数量
   increaseQuantity(e) {
     const itemId = e.currentTarget.dataset.id;
-    const cartItems = this.data.cartItems.map(item => {
-      if (item.id === itemId) {
-        return { ...item, quantity: item.quantity + 1 };
-      }
-      return item;
-    });
+    const cartItem = this.data.cartItems.find(item => item.id === itemId);
     
-    this.setData({ cartItems });
-    this.saveCartData();
-    this.calculatePrice();
+    if (!cartItem) return;
+    
+    const userId = wx.getStorageSync('userId') || 2;
+    const { api } = require('../../utils/api.js');
+    
+    // 调用后端API更新购物车项目
+    api.updateCartItem(userId, {
+      cartItemId: itemId,
+      quantity: cartItem.quantity + 1
+    }).then(res => {
+      console.log('更新购物车项目成功:', res);
+      // 重新加载购物车数据
+      this.loadCartData();
+    }).catch(err => {
+      console.error('更新购物车项目失败:', err);
+      wx.showToast({
+        title: err.message || '更新失败',
+        icon: 'none'
+      });
+    });
   },
 
   // 减少商品数量
   decreaseQuantity(e) {
     const itemId = e.currentTarget.dataset.id;
-    const cartItems = this.data.cartItems.map(item => {
-      if (item.id === itemId && item.quantity > 1) {
-        return { ...item, quantity: item.quantity - 1 };
-      }
-      return item;
-    });
+    const cartItem = this.data.cartItems.find(item => item.id === itemId);
     
-    this.setData({ cartItems });
-    this.saveCartData();
-    this.calculatePrice();
+    if (!cartItem || cartItem.quantity <= 1) return;
+    
+    const userId = wx.getStorageSync('userId') || 2;
+    const { api } = require('../../utils/api.js');
+    
+    // 调用后端API更新购物车项目
+    api.updateCartItem(userId, {
+      cartItemId: itemId,
+      quantity: cartItem.quantity - 1
+    }).then(res => {
+      console.log('更新购物车项目成功:', res);
+      // 重新加载购物车数据
+      this.loadCartData();
+    }).catch(err => {
+      console.error('更新购物车项目失败:', err);
+      wx.showToast({
+        title: err.message || '更新失败',
+        icon: 'none'
+      });
+    });
   },
 
   // 删除商品
   removeItem(e) {
     const itemId = e.currentTarget.dataset.id;
+    const userId = wx.getStorageSync('userId') || 2;
+    
     wx.showModal({
       title: '确认删除',
       content: '确定要删除这个商品吗？',
       success: (res) => {
         if (res.confirm) {
-          const cartItems = this.data.cartItems.filter(item => item.id !== itemId);
-          this.setData({ cartItems });
-          this.saveCartData();
-          this.calculatePrice();
+          const { api } = require('../../utils/api.js');
           
-          wx.showToast({
-            title: '删除成功',
-            icon: 'success'
+          // 调用后端API删除购物车项目
+          api.removeCartItem(userId, itemId).then(res => {
+            console.log('删除购物车项目成功:', res);
+            
+            // 重新加载购物车数据
+            this.loadCartData();
+            
+            wx.showToast({
+              title: '删除成功',
+              icon: 'success'
+            });
+          }).catch(err => {
+            console.error('删除购物车项目失败:', err);
+            wx.showToast({
+              title: err.message || '删除失败',
+              icon: 'none'
+            });
           });
         }
       }

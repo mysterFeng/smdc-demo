@@ -200,6 +200,107 @@ const api = {
       url: `/v1/categories/${id}`,
       method: 'GET'
     });
+  },
+  
+  // ========== 购物车相关接口 ==========
+  
+  // 添加菜品到购物车
+  addToCart: (userId, data) => {
+    return request({
+      url: `/v1/cart/${userId}/items`,
+      method: 'POST',
+      data
+    });
+  },
+  
+  // 更新购物车项目
+  updateCartItem: (userId, data) => {
+    return request({
+      url: `/v1/cart/${userId}/items`,
+      method: 'PUT',
+      data
+    });
+  },
+  
+  // 删除购物车项目
+  removeCartItem: (userId, cartItemId) => {
+    return request({
+      url: `/v1/cart/${userId}/items/${cartItemId}`,
+      method: 'DELETE'
+    });
+  },
+  
+  // 根据菜品ID删除购物车项目
+  removeCartItemByDishId: (userId, dishId) => {
+    return request({
+      url: `/v1/cart/${userId}/items/dish/${dishId}`,
+      method: 'DELETE'
+    });
+  },
+  
+  // 清空购物车
+  clearCart: (userId) => {
+    return request({
+      url: `/v1/cart/${userId}/items`,
+      method: 'DELETE'
+    });
+  },
+  
+  // 清空选中的购物车项目
+  clearSelectedItems: (userId) => {
+    return request({
+      url: `/v1/cart/${userId}/items/selected`,
+      method: 'DELETE'
+    });
+  },
+  
+  // 获取用户购物车
+  getUserCart: (userId) => {
+    return request({
+      url: `/v1/cart/${userId}`,
+      method: 'GET'
+    });
+  },
+  
+  // 获取用户购物车项目列表
+  getUserCartItems: (userId) => {
+    return request({
+      url: `/v1/cart/${userId}/items`,
+      method: 'GET'
+    });
+  },
+  
+  // 获取用户选中的购物车项目
+  getSelectedCartItems: (userId) => {
+    return request({
+      url: `/v1/cart/${userId}/items/selected`,
+      method: 'GET'
+    });
+  },
+  
+  // 切换购物车项目选中状态
+  toggleCartItemSelection: (userId, cartItemId) => {
+    return request({
+      url: `/v1/cart/${userId}/items/${cartItemId}/toggle`,
+      method: 'PUT'
+    });
+  },
+  
+  // 全选/取消全选购物车项目
+  toggleAllCartItemsSelection: (userId, selected) => {
+    return request({
+      url: `/v1/cart/${userId}/items/select-all`,
+      method: 'PUT',
+      data: { selected }
+    });
+  },
+  
+  // 获取购物车项目数量
+  getCartItemCount: (userId) => {
+    return request({
+      url: `/v1/cart/${userId}/count`,
+      method: 'GET'
+    });
   }
 };
 

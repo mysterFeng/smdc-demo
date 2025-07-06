@@ -68,17 +68,47 @@ public class JwtInterceptor implements HandlerInterceptor {
     }
     
     /**
-     * 判断是否为排除路径
+     * 判断是否为排除路径（公开接口白名单）
+     * 这些接口不需要JWT验证，可以直接访问
      */
     private boolean isExcludedPath(String requestURI) {
-        return requestURI.startsWith("/v1/users/login") ||
-               requestURI.startsWith("/v1/users/phone-login") ||
-               requestURI.startsWith("/v1/users/register") ||
-               requestURI.startsWith("/v1/users/send-verify-code") ||
-               requestURI.startsWith("/v1/users/test") ||
-               requestURI.startsWith("/v1/dishes") ||
-               requestURI.startsWith("/v1/categories") ||
-               requestURI.startsWith("/error") ||
-               requestURI.equals("/");
+        // 用户相关公开接口
+        if (requestURI.startsWith("/v1/users/login") ||
+            requestURI.startsWith("/v1/users/phone-login") ||
+            requestURI.startsWith("/v1/users/register") ||
+            requestURI.startsWith("/v1/users/send-verify-code") ||
+            requestURI.startsWith("/v1/users/test")) {
+            return true;
+        }
+        
+        // 菜品相关公开接口
+        if (requestURI.startsWith("/v1/dishes")) {
+            return true;
+        }
+        
+        // 分类相关公开接口
+        if (requestURI.startsWith("/v1/categories")) {
+            return true;
+        }
+        
+        // 购物车相关接口（暂时公开访问，后续可根据需要调整）
+        if (requestURI.startsWith("/v1/cart")) {
+            return true;
+        }
+        
+        // 其他公开接口
+        if (requestURI.startsWith("/error") ||
+            requestURI.equals("/") ||
+            requestURI.startsWith("/v3/api-docs") ||
+            requestURI.startsWith("/swagger-ui") ||
+            requestURI.startsWith("/swagger-resources") ||
+            requestURI.startsWith("/webjars") ||
+            requestURI.startsWith("/actuator") ||
+            requestURI.startsWith("/static") ||
+            requestURI.startsWith("/public")) {
+            return true;
+        }
+        
+        return false;
     }
 } 
