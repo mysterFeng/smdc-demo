@@ -301,7 +301,128 @@ const api = {
       url: `/v1/cart/${userId}/count`,
       method: 'GET'
     });
-  }
+  },
+  
+  // ========== 订单相关接口 ==========
+  
+  // 创建订单
+  createOrder: (data) => {
+    return request({
+      url: '/v1/orders',
+      method: 'POST',
+      data
+    });
+  },
+  
+  // 获取订单详情
+  getOrderById: (orderId) => {
+    return request({
+      url: `/v1/orders/${orderId}`,
+      method: 'GET'
+    });
+  },
+  
+  // 根据订单号获取订单详情
+  getOrderByOrderNo: (orderNo) => {
+    return request({
+      url: `/v1/orders/no/${orderNo}`,
+      method: 'GET'
+    });
+  },
+  
+  // 获取用户订单列表
+  getUserOrders: (userId, page = 0, size = 10) => {
+    return request({
+      url: `/v1/orders/user/${userId}?page=${page}&size=${size}`,
+      method: 'GET'
+    });
+  },
+  
+  // 根据状态获取用户订单列表
+  getUserOrdersByStatus: (userId, status, page = 0, size = 10) => {
+    return request({
+      url: `/v1/orders/user/${userId}/status/${status}?page=${page}&size=${size}`,
+      method: 'GET'
+    });
+  },
+  
+  // 取消订单
+  cancelOrder: (orderId, userId) => {
+    return request({
+      url: `/v1/orders/${orderId}/cancel?userId=${userId}`,
+      method: 'POST'
+    });
+  },
+  
+  // 支付订单
+  payOrder: (orderId, userId, paymentMethod) => {
+    return request({
+      url: `/v1/orders/${orderId}/pay?userId=${userId}&paymentMethod=${paymentMethod}`,
+      method: 'POST'
+    });
+  },
+  
+  // 确认收货（更新订单状态为已完成）
+  confirmReceive: (orderId) => {
+    return request({
+      url: `/v1/orders/${orderId}/status?status=COMPLETED`,
+      method: 'POST'
+    });
+  },
+  
+  // ========== 地址相关接口 ==========
+  
+  // 获取用户地址列表
+  getUserAddresses: (userId) => {
+    return request({
+      url: `/v1/addresses?userId=${userId}`,
+      method: 'GET'
+    });
+  },
+  
+  // 添加地址
+  addAddress: (userId, data) => {
+    return request({
+      url: `/v1/addresses?userId=${userId}`,
+      method: 'POST',
+      data
+    });
+  },
+  
+  // 更新地址
+  updateAddress: (id, userId, data) => {
+    return request({
+      url: `/v1/addresses/${id}?userId=${userId}`,
+      method: 'PUT',
+      data
+    });
+  },
+  
+  // 删除地址
+  deleteAddress: (id, userId) => {
+    return request({
+      url: `/v1/addresses/${id}?userId=${userId}`,
+      method: 'DELETE'
+    });
+  },
+  
+  // 设置默认地址
+  setDefaultAddress: (id, userId) => {
+    return request({
+      url: `/v1/addresses/${id}/default?userId=${userId}`,
+      method: 'PUT'
+    });
+  },
+  
+  // 优惠券相关
+  getUserCoupons: (userId) => request({ url: `/v1/coupons/user/${userId}` }),
+  getAvailableUserCoupons: (userId, orderAmount) => request({ url: `/v1/coupons/user/${userId}/available?orderAmount=${orderAmount}` }),
+  receiveCoupon: (userId, couponId) => request({ url: `/v1/coupons/receive?userId=${userId}&couponId=${couponId}`, method: 'POST' }),
+  useCoupon: (userId, userCouponId, orderId) => request({ url: `/v1/coupons/use`, method: 'POST', data: { userId, userCouponId, orderId } }),
+  validateCoupon: (userId, userCouponId, orderAmount) => request({ url: `/v1/coupons/validate`, method: 'POST', data: { userId, userCouponId, orderAmount } }),
+  
+  // 获取地址详情
+  getAddressById: (id, userId) => request({ url: `/v1/addresses/${id}?userId=${userId}` })
 };
 
 module.exports = {

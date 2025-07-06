@@ -96,6 +96,21 @@ public class JwtInterceptor implements HandlerInterceptor {
             return true;
         }
         
+        // 订单相关接口（暂时公开访问，后续可根据需要调整）
+        if (requestURI.startsWith("/v1/orders")) {
+            return true;
+        }
+        
+        // 优惠券相关接口（暂时公开访问，后续可根据需要调整）
+        if (requestURI.startsWith("/v1/coupons")) {
+            return true;
+        }
+        
+        // 地址相关接口（暂时公开访问，后续可根据需要调整）
+        if (requestURI.startsWith("/v1/addresses")) {
+            return true;
+        }
+        
         // 其他公开接口
         if (requestURI.startsWith("/error") ||
             requestURI.equals("/") ||

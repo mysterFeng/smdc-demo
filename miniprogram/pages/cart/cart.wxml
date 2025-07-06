@@ -12,11 +12,11 @@
     <scroll-view class="cart-list" scroll-y="true">
       <view class="cart-item" wx:for="{{cartItems}}" wx:key="id">
         <view class="item-info">
-          <image class="item-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+          <image class="item-image" src="{{item.dishImageUrl || '/images/default-dish.png'}}" mode="aspectFill"></image>
           <view class="item-details">
-            <view class="item-name">{{item.name}}</view>
-            <view class="item-desc">{{item.description}}</view>
-            <view class="item-price">¥{{item.price}}</view>
+            <view class="item-name">{{item.dishName}}</view>
+            <view class="item-desc">{{item.remark || '暂无备注'}}</view>
+            <view class="item-price">¥{{item.unitPrice}}</view>
           </view>
         </view>
         <view class="item-actions">
@@ -35,10 +35,16 @@
       <view class="coupon-item" bindtap="selectCoupon">
         <view class="coupon-info">
           <text class="coupon-label">优惠券</text>
-          <text class="coupon-value" wx:if="{{selectedCoupon}}">{{selectedCoupon.name}}</text>
+          <view class="coupon-details" wx:if="{{selectedCoupon}}">
+            <text class="coupon-value">{{selectedCoupon.couponName}}</text>
+            <text class="coupon-desc">-¥{{selectedCoupon.couponValue}}</text>
+          </view>
           <text class="coupon-placeholder" wx:else>选择优惠券</text>
         </view>
-        <icon type="arrow" size="16" color="#999"></icon>
+        <view class="coupon-actions">
+          <text class="coupon-clear" wx:if="{{selectedCoupon}}" bindtap="clearSelectedCoupon">清除</text>
+          <icon type="arrow" size="16" color="#999"></icon>
+        </view>
       </view>
     </view>
 
@@ -49,7 +55,7 @@
           <text class="address-label">配送地址</text>
           <view class="address-details" wx:if="{{selectedAddress}}">
             <text class="address-name">{{selectedAddress.name}} {{selectedAddress.phone}}</text>
-            <text class="address-address">{{selectedAddress.address}}</text>
+            <text class="address-address">{{selectedAddress.province}}{{selectedAddress.city}}{{selectedAddress.district}}{{selectedAddress.detail}}</text>
           </view>
           <text class="address-placeholder" wx:else>选择配送地址</text>
         </view>
@@ -93,6 +99,25 @@
       <text class="total-label">合计：</text>
       <text class="total-amount">¥{{actualAmount}}</text>
     </view>
-    <button class="btn-checkout" bindtap="checkout">立即结算</button>
+    <button class="btn-checkout" bindtap="submitOrder">立即结算</button>
+  </view>
+
+  <!-- 优惠券选择弹窗 -->
+  <view class="modal-overlay" wx:if="{{showCouponModal}}" bindtap="closeCouponModal">
+    <view class="coupon-modal" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">选择优惠券</text>
+        <text class="modal-close" bindtap="closeCouponModal">×</text>
+      </view>
+      <view class="coupon-list">
+        <view class="coupon-option" wx:for="{{availableCoupons}}" wx:key="id" bindtap="onCouponSelect" data-coupon="{{item}}">
+          <view class="coupon-option-info">
+            <text class="coupon-option-name">{{item.couponName}}</text>
+            <text class="coupon-option-desc">{{item.couponDescription}}</text>
+          </view>
+          <text class="coupon-option-value">-¥{{item.couponValue}}</text>
+        </view>
+      </view>
+    </view>
   </view>
 </view> 

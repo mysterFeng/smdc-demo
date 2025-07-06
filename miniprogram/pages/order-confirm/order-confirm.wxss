@@ -1,0 +1,291 @@
+/* 订单确认页面样式 */
+.container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: 120rpx;
+}
+
+/* 页面标题 */
+.page-header {
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 通用区块样式 */
+.section {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-arrow {
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 地址区块 */
+.address-section {
+  cursor: pointer;
+}
+
+.address-content {
+  padding: 20rpx 0;
+}
+
+.address-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.address-name-phone {
+  display: flex;
+  gap: 20rpx;
+  align-items: center;
+}
+
+.address-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.address-phone {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.address-detail {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+.address-empty {
+  padding: 40rpx 0;
+  text-align: center;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 订单商品 */
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.item-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.item-name {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.item-price {
+  font-size: 28rpx;
+  color: #ff6b35;
+  font-weight: bold;
+}
+
+.item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 支付方式 */
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  border: 2rpx solid #eee;
+  border-radius: 8rpx;
+  position: relative;
+}
+
+.payment-method.selected {
+  border-color: #ff6b35;
+  background-color: #fff5f2;
+}
+
+.payment-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.payment-name {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.payment-check {
+  color: #ff6b35;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+/* 订单备注 */
+.remark-content {
+  padding: 20rpx 0;
+}
+
+.remark-text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 价格明细 */
+.price-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.price-value {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.price-value.discount {
+  color: #ff6b35;
+}
+
+.price-item.total {
+  border-top: 1rpx solid #eee;
+  padding-top: 15rpx;
+  margin-top: 10rpx;
+}
+
+.price-item.total .price-label {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.price-value.total-amount {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ff6b35;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+  border-top: 1rpx solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.total-info {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.total-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.total-amount {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ff6b35;
+}
+
+.submit-btn {
+  background-color: #ff6b35;
+  color: #fff;
+  border: none;
+  border-radius: 50rpx;
+  padding: 20rpx 60rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.submit-btn.loading {
+  background-color: #ccc;
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+} 

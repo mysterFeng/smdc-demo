@@ -12,15 +12,21 @@
     </view>
   </view>
 
+  <!-- 加载状态 -->
+  <view class="loading-container" wx:if="{{isLoading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
   <!-- 订单列表 -->
-  <scroll-view class="order-list" scroll-y="true" wx:if="{{orders.length > 0}}">
-    <view class="order-item" wx:for="{{orders}}" wx:key="id" bindtap="goToOrderDetail" data-id="{{item.id}}">
-      <view class="order-header">
+  <scroll-view class="order-list" scroll-y="true" wx:elif="{{orders.length > 0}}">
+    <view class="order-item" wx:for="{{orders}}" wx:key="id">
+      <view class="order-header" bindtap="goToOrderDetail" data-id="{{item.id}}">
         <text class="order-no">订单号：{{item.orderNo}}</text>
         <text class="order-status {{item.statusClass}}">{{item.statusText}}</text>
       </view>
       
-      <view class="order-content">
+      <view class="order-content" bindtap="goToOrderDetail" data-id="{{item.id}}">
         <view class="dish-list">
           <view class="dish-item" wx:for="{{item.dishes}}" wx:key="id" wx:for-item="dish">
             <image class="dish-image" src="{{dish.imageUrl}}" mode="aspectFill"></image>
@@ -41,10 +47,19 @@
       <view class="order-footer">
         <view class="order-time">{{item.createTime}}</view>
         <view class="order-actions">
-          <button class="btn-action" wx:if="{{item.status === 1}}" bindtap="cancelOrder" data-id="{{item.id}}">取消订单</button>
-          <button class="btn-action" wx:if="{{item.status === 2}}" bindtap="confirmReceive" data-id="{{item.id}}">确认收货</button>
-          <button class="btn-action" wx:if="{{item.status === 3}}" bindtap="goToReview" data-id="{{item.id}}">评价</button>
-          <button class="btn-action" wx:if="{{item.status === 4}}" bindtap="reorder" data-id="{{item.id}}">再来一单</button>
+          <!-- 待付款状态 -->
+          <button class="btn-action" wx:if="{{item.status === 'PENDING_PAYMENT'}}" bindtap="cancelOrder" data-id="{{item.id}}">取消订单</button>
+          <button class="btn-action primary" wx:if="{{item.status === 'PENDING_PAYMENT'}}" bindtap="goToOrderDetail" data-id="{{item.id}}">立即支付</button>
+          
+          <!-- 已付款、制作中、待取餐状态 -->
+          <button class="btn-action" wx:if="{{item.status === 'PAID' || item.status === 'PREPARING' || item.status === 'READY'}}" bindtap="confirmReceive" data-id="{{item.id}}">确认收货</button>
+          
+          <!-- 已完成状态 -->
+          <button class="btn-action" wx:if="{{item.status === 'COMPLETED'}}" bindtap="goToReview" data-id="{{item.id}}">评价</button>
+          <button class="btn-action" wx:if="{{item.status === 'COMPLETED'}}" bindtap="reorder" data-id="{{item.id}}">再来一单</button>
+          
+          <!-- 已取消状态 -->
+          <button class="btn-action" wx:if="{{item.status === 'CANCELLED'}}" bindtap="reorder" data-id="{{item.id}}">再来一单</button>
         </view>
       </view>
     </view>

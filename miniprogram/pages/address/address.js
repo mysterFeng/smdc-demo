@@ -1,3 +1,5 @@
+const { api } = require('../../utils/api');
+
 Page({
   data: {
     addresses: [],
@@ -16,33 +18,60 @@ Page({
     this.loadAddresses();
   },
 
-  // 加载地址列表
+  // 加载地址列表（接口）
   loadAddresses() {
-    // 从本地存储获取地址数据
-    const addresses = wx.getStorageSync('addresses') || [];
-    this.setData({ addresses });
+    const userId = 2; // TODO: 实际项目应从登录态获取
+    api.getUserAddresses(userId).then(res => {
+      if (res.code === 200) {
+        this.setData({ addresses: res.data || [] });
+      }
+    });
   },
 
   // 选择地址
   selectAddress(e) {
     if (!this.data.isSelectMode) return;
-    
-    const addressId = e.currentTarget.dataset.id;
-    const selectedAddress = this.data.addresses.find(addr => addr.id === addressId);
-    
-    if (selectedAddress) {
-      // 返回上一页并传递选中的地址
-      const pages = getCurrentPages();
-      const prevPage = pages[pages.length - 2];
-      
-      if (prevPage) {
-        prevPage.setData({
-          selectedAddress: selectedAddress
-        });
-      }
-      
-      wx.navigateBack();
+    const address = e.currentTarget.dataset.address;
+    // 返回上一页并设置选中地址
+    const pages = getCurrentPages();
+    const prevPage = pages[pages.length - 2];
+    if (prevPage) {
+      prevPage.setData({ selectedAddress: address });
     }
+    wx.navigateBack();
+  },
+
+  // 添加地址
+  addAddress() {
+    wx.navigateTo({ url: '/pages/address-edit/address-edit' });
+  },
+
+  // 编辑地址
+  editAddress(e) {
+    const addressId = e.currentTarget.dataset.id;
+    wx.navigateTo({ url: `/pages/address-edit/address-edit?id=${addressId}` });
+  },
+
+  // 删除地址
+  deleteAddress(e) {
+    const addressId = e.currentTarget.dataset.id;
+    const userId = 2; // TODO: 实际项目应从登录态获取
+    wx.showModal({
+      title: '确认删除',
+      content: '确定要删除该地址吗？',
+      success: (res) => {
+        if (res.confirm) {
+          api.deleteAddress(addressId, userId).then(r => {
+            if (r.code === 200) {
+              wx.showToast({ title: '删除成功', icon: 'success' });
+              this.loadAddresses();
+            } else {
+              wx.showToast({ title: r.message || '删除失败', icon: 'none' });
+            }
+          });
+        }
+      }
+    });
   },
 
   // 设置默认地址
@@ -59,44 +88,6 @@ Page({
     wx.showToast({
       title: '设置成功',
       icon: 'success'
-    });
-  },
-
-  // 编辑地址
-  editAddress(e) {
-    const addressId = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: `/pages/address-edit/address-edit?id=${addressId}`
-    });
-  },
-
-  // 删除地址
-  deleteAddress(e) {
-    const addressId = e.currentTarget.dataset.id;
-    const address = this.data.addresses.find(addr => addr.id === addressId);
-    
-    wx.showModal({
-      title: '确认删除',
-      content: `确定要删除地址"${address.name} ${address.phone}"吗？`,
-      success: (res) => {
-        if (res.confirm) {
-          const addresses = this.data.addresses.filter(addr => addr.id !== addressId);
-          this.setData({ addresses });
-          wx.setStorageSync('addresses', addresses);
-          
-          wx.showToast({
-            title: '删除成功',
-            icon: 'success'
-          });
-        }
-      }
-    });
-  },
-
-  // 添加地址
-  addAddress() {
-    wx.navigateTo({
-      url: '/pages/address-edit/address-edit'
     });
   }
 }); 

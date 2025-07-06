@@ -34,7 +34,13 @@ public class WebConfig implements WebMvcConfigurer {
                     "/v1/dishes/**", 
                     "/v1/categories/**",
                     // 购物车相关接口（暂时公开访问）
-                    "/v1/cart/**"
+                    "/v1/cart/**",
+                    // 订单相关接口（暂时公开访问）
+                    "/v1/orders/**",
+                    // 优惠券相关接口（暂时公开访问）
+                    "/v1/coupons/**",
+                    // 地址相关接口（暂时公开访问）
+                    "/v1/addresses/**"
                 );
     }
     

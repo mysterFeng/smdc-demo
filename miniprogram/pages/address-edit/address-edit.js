@@ -1,3 +1,5 @@
+const { api } = require('../../utils/api');
+
 Page({
   data: {
     isEdit: false,
@@ -5,7 +7,7 @@ Page({
     formData: {
       name: '',
       phone: '',
-      region: '',
+      region: [],
       detail: '',
       isDefault: false
     },
@@ -22,165 +24,86 @@ Page({
     }
   },
 
-  // 加载地址数据
+  // 加载地址数据（接口）
   loadAddressData(id) {
-    const addresses = wx.getStorageSync('addresses') || [];
-    const address = addresses.find(addr => addr.id == id);
-    
-    if (address) {
-      this.setData({
-        formData: {
-          name: address.name,
-          phone: address.phone,
-          region: address.region,
-          detail: address.detail,
-          isDefault: address.isDefault
-        },
-        region: address.regionArray || []
-      });
-    }
-  },
-
-  // 收货人姓名输入
-  onNameInput(e) {
-    this.setData({
-      'formData.name': e.detail.value
+    const userId = 2; // TODO: 实际项目应从登录态获取
+    api.getAddressById(id, userId).then(res => {
+      if (res.code === 200 && res.data) {
+        const address = res.data;
+        this.setData({
+          formData: {
+            name: address.name,
+            phone: address.phone,
+            region: [address.province, address.city, address.district],
+            detail: address.detail,
+            isDefault: address.isDefault === 1
+          },
+          region: [address.province, address.city, address.district]
+        });
+      }
     });
   },
 
-  // 手机号码输入
-  onPhoneInput(e) {
-    this.setData({
-      'formData.phone': e.detail.value
-    });
-  },
-
-  // 地区选择
+  // 省市区选择
   onRegionChange(e) {
-    const region = e.detail.value;
     this.setData({
-      region: region,
-      'formData.region': region.join(' ')
+      'formData.region': e.detail.value,
+      region: e.detail.value
     });
   },
 
-  // 详细地址输入
-  onDetailInput(e) {
-    this.setData({
-      'formData.detail': e.detail.value
-    });
+  // 输入框输入
+  onInput(e) {
+    const field = e.currentTarget.dataset.field;
+    this.setData({ [`formData.${field}`]: e.detail.value });
   },
 
-  // 切换默认地址
-  toggleDefault() {
-    this.setData({
-      'formData.isDefault': !this.data.formData.isDefault
-    });
-  },
-
-  // 默认地址开关变化
+  // 是否默认地址切换
   onDefaultChange(e) {
-    this.setData({
-      'formData.isDefault': e.detail.value
-    });
+    this.setData({ 'formData.isDefault': e.detail.value });
   },
 
-  // 验证表单
-  validateForm() {
-    const { name, phone, region, detail } = this.data.formData;
-    
-    if (!name.trim()) {
-      wx.showToast({
-        title: '请输入收货人姓名',
-        icon: 'none'
-      });
-      return false;
-    }
-    
-    if (!phone.trim()) {
-      wx.showToast({
-        title: '请输入手机号码',
-        icon: 'none'
-      });
-      return false;
-    }
-    
-    // 简单的手机号验证
-    const phoneRegex = /^1[3-9]\d{9}$/;
-    if (!phoneRegex.test(phone)) {
-      wx.showToast({
-        title: '请输入正确的手机号码',
-        icon: 'none'
-      });
-      return false;
-    }
-    
-    if (!region.trim()) {
-      wx.showToast({
-        title: '请选择所在地区',
-        icon: 'none'
-      });
-      return false;
-    }
-    
-    if (!detail.trim()) {
-      wx.showToast({
-        title: '请输入详细地址',
-        icon: 'none'
-      });
-      return false;
-    }
-    
-    return true;
+  // 切换默认地址（点击文字切换）
+  toggleDefault() {
+    this.setData({ 'formData.isDefault': !this.data.formData.isDefault });
   },
 
-  // 保存地址
+  // 保存地址（接口）
   saveAddress() {
-    if (!this.validateForm()) {
+    const userId = 2; // TODO: 实际项目应从登录态获取
+    const { formData, isEdit, addressId } = this.data;
+    if (!formData.name || !formData.phone || !formData.region.length || !formData.detail) {
+      wx.showToast({ title: '请填写完整信息', icon: 'none' });
       return;
     }
-    
-    const addresses = wx.getStorageSync('addresses') || [];
-    const formData = this.data.formData;
-    
-    if (this.data.isEdit) {
-      // 编辑模式
-      const index = addresses.findIndex(addr => addr.id == this.data.addressId);
-      if (index !== -1) {
-        addresses[index] = {
-          ...addresses[index],
-          ...formData,
-          regionArray: this.data.region
-        };
-      }
+    const data = {
+      name: formData.name,
+      phone: formData.phone,
+      province: formData.region[0],
+      city: formData.region[1],
+      district: formData.region[2],
+      detail: formData.detail,
+      isDefault: formData.isDefault ? 1 : 0
+    };
+    if (isEdit) {
+      api.updateAddress(addressId, userId, data).then(res => {
+        if (res.code === 200) {
+          wx.showToast({ title: '保存成功', icon: 'success' });
+          wx.navigateBack();
+        } else {
+          wx.showToast({ title: res.message || '保存失败', icon: 'none' });
+        }
+      });
     } else {
-      // 新增模式
-      const newAddress = {
-        id: Date.now(),
-        ...formData,
-        regionArray: this.data.region
-      };
-      
-      // 如果设为默认地址，取消其他地址的默认状态
-      if (formData.isDefault) {
-        addresses.forEach(addr => addr.isDefault = false);
-      }
-      
-      addresses.push(newAddress);
+      api.addAddress(userId, data).then(res => {
+        if (res.code === 200) {
+          wx.showToast({ title: '添加成功', icon: 'success' });
+          wx.navigateBack();
+        } else {
+          wx.showToast({ title: res.message || '添加失败', icon: 'none' });
+        }
+      });
     }
-    
-    // 保存到本地存储
-    wx.setStorageSync('addresses', addresses);
-    
-    wx.showToast({
-      title: this.data.isEdit ? '修改成功' : '添加成功',
-      icon: 'success'
-    });
-    
-    // 返回上一页
-    setTimeout(() => {
-      wx.navigateBack();
-    }, 1500);
   },
 
   // 删除地址
@@ -190,19 +113,23 @@ Page({
       content: '确定要删除这个地址吗？',
       success: (res) => {
         if (res.confirm) {
-          const addresses = wx.getStorageSync('addresses') || [];
-          const filteredAddresses = addresses.filter(addr => addr.id != this.data.addressId);
-          
-          wx.setStorageSync('addresses', filteredAddresses);
-          
-          wx.showToast({
-            title: '删除成功',
-            icon: 'success'
+          const userId = 2; // TODO: 实际项目应从登录态获取
+          api.deleteAddress(this.data.addressId, userId).then(res => {
+            if (res.code === 200) {
+              wx.showToast({
+                title: '删除成功',
+                icon: 'success'
+              });
+              setTimeout(() => {
+                wx.navigateBack();
+              }, 1500);
+            } else {
+              wx.showToast({
+                title: res.message || '删除失败',
+                icon: 'none'
+              });
+            }
           });
-          
-          setTimeout(() => {
-            wx.navigateBack();
-          }, 1500);
         }
       }
     });
