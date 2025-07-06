@@ -414,12 +414,70 @@ const api = {
     });
   },
   
-  // 优惠券相关
-  getUserCoupons: (userId) => request({ url: `/v1/coupons/user/${userId}` }),
-  getAvailableUserCoupons: (userId, orderAmount) => request({ url: `/v1/coupons/user/${userId}/available?orderAmount=${orderAmount}` }),
-  receiveCoupon: (userId, couponId) => request({ url: `/v1/coupons/receive?userId=${userId}&couponId=${couponId}`, method: 'POST' }),
-  useCoupon: (userId, userCouponId, orderId) => request({ url: `/v1/coupons/use`, method: 'POST', data: { userId, userCouponId, orderId } }),
-  validateCoupon: (userId, userCouponId, orderAmount) => request({ url: `/v1/coupons/validate`, method: 'POST', data: { userId, userCouponId, orderAmount } }),
+  // ========== 优惠券相关接口 ==========
+  
+  // 获取可用优惠券列表
+  getAvailableCoupons: () => {
+    return request({
+      url: '/v1/coupons',
+      method: 'GET'
+    });
+  },
+  
+  // 获取优惠券详情
+  getCouponById: (id) => {
+    return request({
+      url: `/v1/coupons/${id}`,
+      method: 'GET'
+    });
+  },
+  
+  // 用户领取优惠券
+  receiveCoupon: (userId, couponId) => {
+    return request({
+      url: '/v1/coupons/receive',
+      method: 'POST',
+      data: { userId, couponId }
+    });
+  },
+  
+  // 获取用户优惠券列表
+  getUserCoupons: (userId, status = null) => {
+    let url = `/v1/coupons/user/${userId}`;
+    if (status !== null) {
+      url += `?status=${status}`;
+    }
+    return request({
+      url: url,
+      method: 'GET'
+    });
+  },
+  
+  // 获取用户可用优惠券（根据订单金额筛选）
+  getAvailableUserCoupons: (userId, orderAmount) => {
+    return request({
+      url: `/v1/coupons/user/${userId}/available?orderAmount=${orderAmount}`,
+      method: 'GET'
+    });
+  },
+  
+  // 使用优惠券
+  useCoupon: (userId, userCouponId, orderId) => {
+    return request({
+      url: '/v1/coupons/use',
+      method: 'POST',
+      data: { userId, userCouponId, orderId }
+    });
+  },
+  
+  // 验证优惠券是否可用
+  validateCoupon: (userId, userCouponId, orderAmount) => {
+    return request({
+      url: '/v1/coupons/validate',
+      method: 'POST',
+      data: { userId, userCouponId, orderAmount }
+    });
+  },
   
   // 获取地址详情
   getAddressById: (id, userId) => request({ url: `/v1/addresses/${id}?userId=${userId}` }),

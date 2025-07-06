@@ -40,7 +40,10 @@ public class WebConfig implements WebMvcConfigurer {
                     // 优惠券相关接口（暂时公开访问）
                     "/v1/coupons/**",
                     // 地址相关接口（暂时公开访问）
-                    "/v1/addresses/**"
+                    "/v1/addresses/**",
+                    // 用户统计接口（暂时公开访问）
+                    "/v1/users/*/order-stats",
+                    "/v1/users/*/coupon-stats"
                 );
     }
     

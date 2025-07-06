@@ -65,7 +65,7 @@
     
     <view class="exchange-list">
       <view class="exchange-item" wx:for="{{exchangeItems}}" wx:key="id" bindtap="exchangeItem" data-item="{{item}}">
-        <image class="exchange-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+        <view class="exchange-image">{{item.icon}}</view>
         <view class="exchange-info">
           <view class="exchange-name">{{item.name}}</view>
           <view class="exchange-desc">{{item.description}}</view>

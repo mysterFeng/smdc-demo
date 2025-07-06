@@ -59,4 +59,9 @@ public interface OrderService {
      * 根据状态分页查询订单（商家端使用）
      */
     Page<OrderVO> getOrdersByStatus(String status, Pageable pageable);
+    
+    /**
+     * 统计用户指定状态的订单数量
+     */
+    long countByUserIdAndStatus(Long userId, String status);
 } 

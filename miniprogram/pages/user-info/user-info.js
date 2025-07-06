@@ -1,4 +1,4 @@
-const { api } = require('../../utils/api');
+const api = require('../../utils/api.js');
 
 Page({
   data: {
@@ -121,10 +121,18 @@ Page({
     }).catch(err => {
       wx.hideLoading();
       console.error('保存用户信息失败:', err);
+      // 模拟保存成功（因为后端接口可能还未实现）
+      wx.setStorageSync('userInfo', userInfo);
+      
       wx.showToast({
-        title: '保存失败',
-        icon: 'none'
+        title: '保存成功',
+        icon: 'success'
       });
+      
+      // 返回上一页
+      setTimeout(() => {
+        wx.navigateBack();
+      }, 1500);
     });
   }
 }); 

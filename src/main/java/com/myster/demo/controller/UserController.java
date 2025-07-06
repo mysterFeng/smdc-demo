@@ -5,6 +5,8 @@ import com.myster.demo.dto.UserPhoneLoginDTO;
 import com.myster.demo.dto.UserRegisterDTO;
 import com.myster.demo.dto.VerifyCodeDTO;
 import com.myster.demo.service.UserService;
+import com.myster.demo.service.OrderService;
+import com.myster.demo.service.CouponService;
 import com.myster.demo.vo.Result;
 import com.myster.demo.vo.UserVO;
 
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 用户控制器
@@ -30,6 +35,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private OrderService orderService;
+    
+    @Autowired
+    private CouponService couponService;
 
     @PostMapping("/login")
     public Result<UserVO> login(@Valid @RequestBody UserLoginDTO loginDTO) {
@@ -103,5 +114,64 @@ public class UserController {
     @GetMapping("/test")
     public Result<String> test() {
         return Result.success("Hello, 点餐小程序后端系统运行正常！");
+    }
+    
+    /**
+     * 获取用户订单统计
+     */
+    @GetMapping("/{userId}/order-stats")
+    public Result<Map<String, Object>> getUserOrderStats(@PathVariable Long userId) {
+        log.info("获取用户{}订单统计", userId);
+        try {
+            Map<String, Object> stats = new HashMap<>();
+            
+            // 统计各状态订单数量
+            stats.put("pendingCount", orderService.countByUserIdAndStatus(userId, "PENDING_PAYMENT"));
+            stats.put("deliveringCount", orderService.countByUserIdAndStatus(userId, "PAID") + 
+                                       orderService.countByUserIdAndStatus(userId, "PREPARING") + 
+                                       orderService.countByUserIdAndStatus(userId, "READY"));
+            stats.put("reviewCount", orderService.countByUserIdAndStatus(userId, "COMPLETED"));
+            stats.put("completedCount", orderService.countByUserIdAndStatus(userId, "COMPLETED"));
+            
+            return Result.success(stats);
+        } catch (Exception e) {
+            log.error("获取用户订单统计失败", e);
+            return Result.error("获取统计失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 获取用户优惠券统计
+     */
+    @GetMapping("/{userId}/coupon-stats")
+    public Result<Map<String, Object>> getUserCouponStats(@PathVariable Long userId) {
+        log.info("获取用户{}优惠券统计", userId);
+        try {
+            Map<String, Object> stats = new HashMap<>();
+            
+            // 获取用户所有优惠券
+            List<com.myster.demo.vo.UserCouponVO> allCoupons = couponService.getUserCoupons(userId, null);
+            
+            // 统计各状态优惠券数量
+            long availableCount = allCoupons.stream()
+                    .filter(coupon -> coupon.getStatus() == 0 && coupon.getIsAvailable())
+                    .count();
+            long usedCount = allCoupons.stream()
+                    .filter(coupon -> coupon.getStatus() == 1)
+                    .count();
+            long expiredCount = allCoupons.stream()
+                    .filter(coupon -> coupon.getStatus() == 2 || (coupon.getStatus() == 0 && !coupon.getIsAvailable()))
+                    .count();
+            
+            stats.put("availableCount", availableCount);
+            stats.put("usedCount", usedCount);
+            stats.put("expiredCount", expiredCount);
+            stats.put("totalCount", allCoupons.size());
+            
+            return Result.success(stats);
+        } catch (Exception e) {
+            log.error("获取用户优惠券统计失败", e);
+            return Result.error("获取统计失败: " + e.getMessage());
+        }
     }
 } 

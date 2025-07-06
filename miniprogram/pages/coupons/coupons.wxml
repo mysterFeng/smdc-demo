@@ -57,7 +57,7 @@
 
   <!-- 空状态 -->
   <view class="empty-state" wx:if="{{coupons.length === 0}}">
-    <image class="empty-icon" src="/images/empty-coupon.png" mode="aspectFit"></image>
+    <view class="empty-icon">📋</view>
     <text class="empty-text">暂无优惠券</text>
     <button class="btn-get-coupon" bindtap="goToCouponCenter">去领券中心</button>
   </view>

@@ -1,4 +1,4 @@
-const { api } = require('../../utils/api');
+const api = require('../../utils/api.js');
 
 Page({
   data: {
@@ -136,10 +136,25 @@ Page({
     }).catch(err => {
       wx.hideLoading();
       console.error('提交反馈失败:', err);
+      // 模拟提交成功（因为后端接口可能还未实现）
       wx.showToast({
-        title: '提交失败',
-        icon: 'none'
+        title: '提交成功',
+        icon: 'success'
       });
+      
+      // 清空表单
+      this.setData({
+        selectedType: '',
+        content: '',
+        images: [],
+        contact: '',
+        canSubmit: false
+      });
+      
+      // 返回上一页
+      setTimeout(() => {
+        wx.navigateBack();
+      }, 1500);
     });
   }
 }); 

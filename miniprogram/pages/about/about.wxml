@@ -1,7 +1,7 @@
 <view class="about-container">
   <!-- 应用信息 -->
   <view class="app-info">
-    <image class="app-logo" src="/images/app-logo.png" mode="aspectFit"></image>
+    <view class="app-logo">🍽️</view>
     <view class="app-name">智能点餐小程序</view>
     <view class="app-version">版本 1.0.0</view>
   </view>

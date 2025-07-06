@@ -241,4 +241,10 @@ public class OrderServiceImpl implements OrderService {
         orderVO.setOrderItems(orderItemVOs);
         return orderVO;
     }
+    
+    @Override
+    public long countByUserIdAndStatus(Long userId, String status) {
+        Order.OrderStatus orderStatus = Order.OrderStatus.valueOf(status.toUpperCase());
+        return orderRepository.countByUserIdAndStatus(userId, orderStatus);
+    }
 } 

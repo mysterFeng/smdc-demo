@@ -2,7 +2,7 @@
   <!-- 用户信息区域 -->
   <view class="user-section">
     <view class="user-info" bindtap="goToUserInfo">
-      <image class="user-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      <image class="user-avatar" src="{{userInfo.avatarUrl || '/images/avatar.png'}}" mode="aspectFill"></image>
       <view class="user-details">
         <view class="user-name">{{userInfo.nickName || '未登录'}}</view>
         <view class="user-phone" wx:if="{{userInfo.phone}}">{{userInfo.phone}}</view>

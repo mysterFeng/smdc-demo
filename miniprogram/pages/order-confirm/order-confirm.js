@@ -9,7 +9,10 @@ Page({
       { id: 'wechat', name: '微信支付', icon: '/images/payment/wechat.png' },
       { id: 'alipay', name: '支付宝', icon: '/images/payment/alipay.png' }
     ],
-    isLoading: false
+    isLoading: false,
+    selectedCoupon: null, // 选中的优惠券
+    availableCoupons: [], // 可用优惠券列表
+    showCouponModal: false // 是否显示优惠券选择弹窗
   },
 
   onLoad(options) {
@@ -19,6 +22,7 @@ Page({
         const orderData = JSON.parse(decodeURIComponent(options.orderData));
         this.setData({ orderData });
         this.loadDefaultAddress();
+        this.loadAvailableCoupons(); // 加载可用优惠券
       } catch (error) {
         console.error('解析订单数据失败:', error);
         wx.showToast({
@@ -56,6 +60,26 @@ Page({
     this.setData({ selectedAddress: mockAddress });
   },
 
+  // 加载可用优惠券
+  loadAvailableCoupons() {
+    const userInfo = wx.getStorageSync('userInfo');
+    if (!userInfo || !userInfo.id) {
+      return;
+    }
+
+    const orderAmount = this.data.orderData.totalAmount;
+    
+    api.getAvailableUserCoupons(userInfo.id, orderAmount).then(res => {
+      if (res.code === 200) {
+        this.setData({
+          availableCoupons: res.data || []
+        });
+      }
+    }).catch(err => {
+      console.error('加载可用优惠券失败:', err);
+    });
+  },
+
   // 选择地址
   selectAddress() {
     wx.navigateTo({
@@ -67,6 +91,30 @@ Page({
   selectPaymentMethod(e) {
     const method = e.currentTarget.dataset.method;
     this.setData({ paymentMethod: method });
+  },
+
+  // 显示优惠券选择弹窗
+  showCouponSelector() {
+    this.setData({ showCouponModal: true });
+  },
+
+  // 隐藏优惠券选择弹窗
+  hideCouponSelector() {
+    this.setData({ showCouponModal: false });
+  },
+
+  // 选择优惠券
+  selectCoupon(e) {
+    const coupon = e.currentTarget.dataset.coupon;
+    this.setData({
+      selectedCoupon: coupon,
+      showCouponModal: false
+    });
+  },
+
+  // 取消选择优惠券
+  cancelCoupon() {
+    this.setData({ selectedCoupon: null });
   },
 
   // 提交订单
@@ -107,27 +155,18 @@ Page({
 
     // 调用创建订单API
     api.createOrder(orderCreateData).then(res => {
-      wx.hideLoading();
-      this.setData({ isLoading: false });
-
       if (res.code === 200) {
         const order = res.data;
         
-        wx.showToast({
-          title: '订单创建成功',
-          icon: 'success'
-        });
-
-        // 清空购物车
-        this.clearCart();
-
-        // 跳转到支付页面或订单详情页
-        setTimeout(() => {
-          wx.redirectTo({
-            url: `/pages/order-detail/order-detail?id=${order.id}`
-          });
-        }, 1500);
+        // 如果选择了优惠券，使用优惠券
+        if (this.data.selectedCoupon) {
+          this.useCoupon(order.id, userInfo.id);
+        } else {
+          this.handleOrderSuccess(order);
+        }
       } else {
+        wx.hideLoading();
+        this.setData({ isLoading: false });
         wx.showToast({
           title: res.message || '创建订单失败',
           icon: 'none'
@@ -145,6 +184,57 @@ Page({
     });
   },
 
+  // 使用优惠券
+  useCoupon(orderId, userId) {
+    const selectedCoupon = this.data.selectedCoupon;
+    
+    api.useCoupon(userId, selectedCoupon.id, orderId).then(res => {
+      if (res.code === 200) {
+        wx.showToast({
+          title: '优惠券使用成功',
+          icon: 'success'
+        });
+        this.handleOrderSuccess({ id: orderId });
+      } else {
+        wx.hideLoading();
+        this.setData({ isLoading: false });
+        wx.showToast({
+          title: res.message || '使用优惠券失败',
+          icon: 'none'
+        });
+      }
+    }).catch(err => {
+      console.error('使用优惠券失败:', err);
+      wx.hideLoading();
+      this.setData({ isLoading: false });
+      wx.showToast({
+        title: '使用优惠券失败',
+        icon: 'none'
+      });
+    });
+  },
+
+  // 处理订单创建成功
+  handleOrderSuccess(order) {
+    wx.hideLoading();
+    this.setData({ isLoading: false });
+    
+    wx.showToast({
+      title: '订单创建成功',
+      icon: 'success'
+    });
+
+    // 清空购物车
+    this.clearCart();
+
+    // 跳转到支付页面或订单详情页
+    setTimeout(() => {
+      wx.redirectTo({
+        url: `/pages/order-detail/order-detail?id=${order.id}`
+      });
+    }, 1500);
+  },
+
   // 清空购物车
   clearCart() {
     const userInfo = wx.getStorageSync('userInfo');
@@ -160,5 +250,10 @@ Page({
   // 返回购物车
   goBack() {
     wx.navigateBack();
+  },
+
+  // 阻止事件冒泡
+  stopPropagation() {
+    // 空方法，用于阻止事件冒泡
   }
 }); 

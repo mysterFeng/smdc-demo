@@ -71,6 +71,18 @@
     </view>
   </view>
 
+  <!-- 优惠券选择 -->
+  <view class="section coupon-section" bindtap="showCouponSelector">
+    <view class="section-header">
+      <text class="section-title">优惠券</text>
+      <view class="coupon-info">
+        <text class="coupon-text" wx:if="{{selectedCoupon}}">{{selectedCoupon.couponName}}</text>
+        <text class="coupon-text" wx:else>选择优惠券</text>
+        <text class="section-arrow">></text>
+      </view>
+    </view>
+  </view>
+
   <!-- 价格明细 -->
   <view class="section price-section">
     <view class="section-header">
@@ -107,5 +119,34 @@
             disabled="{{isLoading}}">
       {{isLoading ? '提交中...' : '提交订单'}}
     </button>
+  </view>
+
+  <!-- 优惠券选择弹窗 -->
+  <view class="coupon-modal {{showCouponModal ? 'show' : ''}}" bindtap="hideCouponSelector">
+    <view class="coupon-modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">选择优惠券</text>
+        <text class="modal-close" bindtap="hideCouponSelector">×</text>
+      </view>
+      <view class="coupon-list">
+        <view class="coupon-item {{item.id === selectedCoupon.id ? 'selected' : ''}}" 
+              wx:for="{{availableCoupons}}" 
+              wx:key="id"
+              data-coupon="{{item}}"
+              bindtap="selectCoupon">
+          <view class="coupon-left">
+            <text class="coupon-value">¥{{item.couponValue}}</text>
+            <text class="coupon-condition">满{{item.couponMinAmount}}可用</text>
+          </view>
+          <view class="coupon-right">
+            <text class="coupon-name">{{item.couponName}}</text>
+            <text class="coupon-desc">{{item.couponDescription}}</text>
+          </view>
+        </view>
+        <view class="no-coupon" wx:if="{{availableCoupons.length === 0}}">
+          <text class="no-coupon-text">暂无可用优惠券</text>
+        </view>
+      </view>
+    </view>
   </view>
 </view> 
