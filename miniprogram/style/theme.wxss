@@ -1,0 +1,113 @@
+:root {
+  --primary-color: #222;
+  --accent-color: #FFA940; /* 明亮橙色 */
+  --bg-color: #fff;
+  --divider-color: #f0f0f0;
+  --text-main: #222;
+  --text-sub: #888;
+  --border-radius: 12rpx;
+}
+
+/* 通用按钮 */
+.btn-primary {
+  background: linear-gradient(90deg, #FFA940 0%, #FFB84C 100%);
+  color: #fff;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(255,169,64,0.12);
+  transition: background 0.2s;
+}
+.btn-primary:active {
+  background: linear-gradient(90deg, #FFB84C 0%, #FFA940 100%);
+  opacity: 0.85;
+}
+
+.btn-accent {
+  background: var(--accent-color);
+  color: #fff;
+  border-radius: var(--border-radius);
+  font-size: 32rpx;
+  padding: 20rpx 0;
+  text-align: center;
+}
+
+/* 次按钮 */
+.btn-secondary {
+  background: #fff;
+  color: var(--accent-color);
+  border: 2rpx solid var(--accent-color);
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.btn-secondary:active {
+  background: #FFF7E6;
+}
+
+/* 禁用按钮 */
+.btn-disabled {
+  background: #f0f0f0;
+  color: #bbb;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* 圆形图标按钮 */
+.btn-icon {
+  width: 72rpx;
+  height: 72rpx;
+  background: var(--accent-color);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(255,169,64,0.10);
+  transition: background 0.2s;
+}
+.btn-icon:active {
+  opacity: 0.8;
+}
+
+/* 卡片 */
+.card {
+  background: #fff;
+  border-radius: 32rpx;
+  box-shadow: 0 8rpx 32rpx rgba(34,34,34,0.06);
+  margin-bottom: 32rpx;
+  padding: 40rpx 32rpx;
+}
+
+/* 分割线 */
+.divider {
+  height: 1rpx;
+  background: var(--divider-color);
+  margin: 24rpx 0;
+}
+
+/* 标题 */
+.title {
+  color: var(--text-main);
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 24rpx;
+}
+
+.subtitle {
+  color: var(--text-sub);
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+} 
